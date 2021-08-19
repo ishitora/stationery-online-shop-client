@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Footer() {
-  return <div>Footer</div>;
+  return <div>Copyright© 2021 Github:ishitora</div>;
 }
 
 export default Footer;
