@@ -6,11 +6,11 @@ import SignUp from '../SignUp/SignUp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: '300px',
+    width: '300px',
     padding: '30px 10px',
     textAlign: 'center',
     borderRadius: '5px',
-    background: theme.palette.background,
+    background: theme.palette.background.main,
     position: 'relative',
     '&>button': {
       width: '30px',

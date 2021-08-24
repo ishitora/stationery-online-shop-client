@@ -1,5 +1,4 @@
 //登入
-import React from 'react';
 
 import LinkButton from '../LinkButton/LinkButton';
 
