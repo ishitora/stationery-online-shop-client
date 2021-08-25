@@ -26,10 +26,12 @@ function Input(props) {
   const changeVisibility = () => {
     setVisibility(!visibility);
   };
-  const handleBlur = () => {
-    const [newValid, newErrorMessage] = validation(value);
-    setValid(newValid);
-    setErrorMessage(newErrorMessage);
+  const handleBlur = async () => {
+    if (validation) {
+      const [newValid, newErrorMessage] = await validation(value);
+      setValid(newValid);
+      setErrorMessage(newErrorMessage);
+    }
   };
   const classes = useStyles(props);
 

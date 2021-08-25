@@ -1,8 +1,10 @@
 //註冊介面
-
+import { connect } from 'react-redux';
 import LinkButton from '../LinkButton/LinkButton';
 import Input from '../Input/Input';
 import useSetState from '../../hooks/useSetState';
+
+import { userSignUp } from '../../actions/';
 
 import {
   nameValidation,
@@ -11,7 +13,7 @@ import {
 } from '../../utils/inputValidation';
 
 const initialState = {
-  userName: '',
+  name: '',
   email: '',
   password: '',
 };
@@ -25,15 +27,15 @@ function SignUp(props) {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(state);
     if (
-      nameValidation(state.userName)[0] &&
-      emailValidation(state.email)[0] &&
+      nameValidation(state.name)[0] &&
+      (await emailValidation(state.email))[0] &&
       passwordValidation(state.password)[0]
     ) {
-      console.log('ok');
+      props.signUp(state);
     }
   };
   return (
@@ -54,9 +56,9 @@ function SignUp(props) {
           id='signUpUserName'
           label='暱稱'
           validation={nameValidation}
-          name='userName'
+          name='name'
           type='text'
-          value={state.userName}
+          value={state.name}
           onChange={handleChange}
           placeholder='請輸入暱稱'
         />
@@ -84,4 +86,10 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  signUp: (signUpData) => {
+    dispatch(userSignUp(signUpData));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

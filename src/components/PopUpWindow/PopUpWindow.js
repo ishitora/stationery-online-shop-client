@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { connect } from 'react-redux';
+import { useState, useEffect, useRef } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import SignIn from '../SignIn/SignIn';
@@ -48,12 +49,26 @@ const useStyles = makeStyles((theme) => ({
 function PopUpWindow(props) {
   const [child, setChild] = useState('signIn');
   const classes = useStyles();
+
+  const firstRender = useRef(true);
+  //是否初次render
+
+  const changeModal = () => {
+    props.setShowModal(!props.showModal);
+  };
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+    } else {
+      changeModal();
+    }
+  }, [props.isLogin]);
+  //登入或註冊成功後，會關閉互動視窗  初次render時不作用
+
   return (
     <div className={classes.root}>
-      <button
-        onClick={() => {
-          props.setShowModal(!props.showModal);
-        }}></button>
+      <button onClick={changeModal}></button>
       {child === 'signIn' ? (
         <SignIn setChild={setChild} />
       ) : (
@@ -63,4 +78,8 @@ function PopUpWindow(props) {
   );
 }
 
-export default PopUpWindow;
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+});
+
+export default connect(mapStateToProps)(PopUpWindow);

@@ -1,6 +1,9 @@
 //驗證輸入的函式 有錯誤會回傳false和錯誤訊息
+import fetchData from './fetchData';
 
-export const emailValidation = (email) => {
+const api = fetchData();
+
+export const emailValidation = async (email) => {
   if (email.length === 0) {
     return [false, '必須輸入email'];
   }
@@ -10,6 +13,14 @@ export const emailValidation = (email) => {
 
   if (!email.match(emailRegex)) {
     return [false, 'email格式錯誤'];
+  }
+
+  const res = await api.post(`/user/checkEmail`, {
+    email,
+  });
+
+  if (res.data === false) {
+    return [false, '此email已使用'];
   }
 
   return [true, ''];

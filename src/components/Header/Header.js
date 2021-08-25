@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import logo from '../../assets/logo.png';
 import Modal from '../Modal/Modal';
 import PopUpWindow from '../PopUpWindow/PopUpWindow';
 import LinkButton from '../LinkButton/LinkButton';
+import { userSignOut } from '../../actions';
 
-function Header() {
+function Header(props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -15,12 +17,22 @@ function Header() {
       <Link to='/'>
         <img src={logo} alt='LOGO' />
       </Link>
-      <LinkButton
-        onClick={() => {
-          setShowModal(!showModal);
-        }}>
-        註冊/登入
-      </LinkButton>
+      {props.isLogin ? (
+        <LinkButton
+          onClick={() => {
+            props.signOut();
+          }}>
+          登出
+        </LinkButton>
+      ) : (
+        <LinkButton
+          onClick={() => {
+            setShowModal(!showModal);
+          }}>
+          註冊/登入
+        </LinkButton>
+      )}
+
       <Link to='/cart'>
         <ShoppingCartIcon color='primary' />
       </Link>
@@ -32,5 +44,14 @@ function Header() {
     </div>
   );
 }
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+});
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  signOut: () => {
+    dispatch(userSignOut());
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
