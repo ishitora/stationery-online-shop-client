@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/styles';
 
 import Header from './components/Header/Header';
+import CategoryMenu from './components/CategoryMenu/CategoryMenu';
 import Footer from './components/Footer/Footer';
 
 import Cart from './pages/Cart/Cart';
@@ -19,9 +20,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Header />
+          <CategoryMenu />
           <Switch>
             <Route exact path='/' component={Home} />
-            <Route path='/search/:query' component={SearchResult} />
+            <Route path='/search' component={SearchResult} />
             <Route path='/product/:id' component={Product} />
             <Route path='/cart' component={Cart} />
             <Route exact path='/error' component={ErrorPage} />
