@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-
 import logo from '../../assets/logo.png';
 import Modal from '../Modal/Modal';
 import PopUpWindow from '../PopUpWindow/PopUpWindow';
 import LinkButton from '../LinkButton/LinkButton';
+import Cart from '../Cart/Cart';
 import { userSignOut } from '../../actions';
 
 function Header(props) {
@@ -34,7 +33,7 @@ function Header(props) {
       )}
 
       <Link to='/cart'>
-        <ShoppingCartIcon color='primary' />
+        <Cart />
       </Link>
       {showModal ? (
         <Modal>

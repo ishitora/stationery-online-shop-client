@@ -1,22 +1,18 @@
-import fetchData from '../utils/fetchData';
+import customAxios from '../utils/customAxios';
 
-import {
-  USER_SIGN_IN,
-  USER_SIGN_UP,
-  USER_SIGN_OUT,
-  // SEARCH_PRODUCT,
-} from './type';
+import { USER_SIGN_IN, USER_SIGN_UP, USER_SIGN_OUT, ADD_CART } from './type';
 
 //註冊
-
-const api = fetchData();
 
 export const userSignUp = (signUpData) => async (dispatch) => {
   console.log('res=', signUpData);
 
   try {
-    const res = await api.post(`/user/signUp`, signUpData);
+    const res = await customAxios.post(`/user/signUp`, signUpData);
     console.log('res=', res.data);
+    customAxios.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${res.data.token}`;
     dispatch({ type: USER_SIGN_UP, payload: res.data });
   } catch (e) {
     console.error(e);
@@ -26,8 +22,11 @@ export const userSignUp = (signUpData) => async (dispatch) => {
 //登入
 export const userSignIn = (profile) => async (dispatch) => {
   try {
-    const res = await api.post(`/user/signIn`, profile);
+    const res = await customAxios.post(`/user/signIn`, profile);
     console.log('res=', res.data);
+    customAxios.defaults.headers.common[
+      'Authorization'
+    ] = `Bearer ${res.data.token}`;
     dispatch({ type: USER_SIGN_IN, payload: res.data });
   } catch (e) {
     console.error(e);
@@ -39,12 +38,12 @@ export const userSignOut = () => {
   return { type: USER_SIGN_OUT };
 };
 
-// export const searchProduct = (param) => async (dispatch) => {
-//   try {
-//     const res = await api.get(`/product/search${param}`);
-//     console.log('res=', res.data);
-//     dispatch({ type: SEARCH_PRODUCT, payload: res.data });
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
+export const addCart = (product) => async (dispatch) => {
+  try {
+    const res = await customAxios.patch(`/account/cart`, product);
+    console.log('res=', res.data);
+    dispatch({ type: ADD_CART, payload: res.data });
+  } catch (e) {
+    console.error(e);
+  }
+};

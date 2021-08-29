@@ -1,22 +1,25 @@
 //商品購買頁面
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import defaultImage from '../../assets/defaultImage.jpg';
 
-import fetchData from '../../utils/fetchData';
+import customAxios from '../../utils/customAxios';
+
 import LinkButton from '../../components/LinkButton/LinkButton';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { addCart } from '../../actions';
 
 function Product(props) {
   const history = useHistory();
-  const api = fetchData();
+
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
     const reqProduct = async (param) => {
       try {
-        const res = await api.get(`/product/${param}`);
+        const res = await customAxios.get(`/product/${param}`);
         console.log(res);
         setProduct(res.data.product);
       } catch (e) {
@@ -46,8 +49,22 @@ function Product(props) {
         價格:{product.price} {product.priceDiscount}
       </p>
       <p>{product.details}</p>
+      <button
+        onClick={() => {
+          const p = { productId: product.numberId, quantity: 1 };
+          console.log(p);
+          props.addCart(p);
+        }}>
+        加入購物車
+      </button>
     </div>
   );
 }
 
-export default Product;
+const mapDispatchToProps = (dispatch) => ({
+  addCart: (product) => {
+    dispatch(addCart(product));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(Product);

@@ -2,20 +2,19 @@
 import { useState, useEffect } from 'react';
 import qs from 'qs';
 
-import fetchData from '../../utils/fetchData';
+import customAxios from '../../utils/customAxios';
 import ResultList from './ResultList/ResultList';
 import Pagination from '../../components/Pagination/Pagination';
 
 function SearchResult(props) {
   const [productList, setProductList] = useState([]);
   const [resultCount, setResultCount] = useState('');
-  const api = fetchData();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const reqProducts = async (param) => {
       try {
-        const res = await api.get(`/product/search${param}`);
+        const res = await customAxios.get(`/product/search${param}`);
         setProductList(res.data.product);
         setResultCount(res.data.results);
       } catch (e) {

@@ -1,7 +1,5 @@
 //驗證輸入的函式 有錯誤會回傳false和錯誤訊息
-import fetchData from './fetchData';
-
-const api = fetchData();
+import customAxios from './customAxios';
 
 export const emailValidation = async (email) => {
   if (email.length === 0) {
@@ -15,7 +13,7 @@ export const emailValidation = async (email) => {
     return [false, 'email格式錯誤'];
   }
 
-  const res = await api.post(`/user/checkEmail`, {
+  const res = await customAxios.post(`/user/checkEmail`, {
     email,
   });
 

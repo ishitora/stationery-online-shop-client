@@ -6,11 +6,11 @@ import Header from './components/Header/Header';
 import CategoryMenu from './components/CategoryMenu/CategoryMenu';
 import Footer from './components/Footer/Footer';
 
-import Cart from './pages/Cart/Cart';
+import CartPage from './pages/CartPage/CartPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
-import Home from './pages/Home/Home';
-import Product from './pages/Product/Product';
-import SearchResult from './pages/SearchResult/SearchResult';
+import HomePage from './pages/HomePage/HomePage';
+import ProductPage from './pages/ProductPage/ProductPage';
+import SearchResultPage from './pages/SearchResultPage/SearchResultPage';
 
 import theme from './utils/theme';
 
@@ -22,10 +22,10 @@ function App() {
           <Header />
           <CategoryMenu />
           <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/search' component={SearchResult} />
-            <Route path='/product/:id' component={Product} />
-            <Route path='/cart' component={Cart} />
+            <Route exact path='/' component={HomePage} />
+            <Route path='/search' component={SearchResultPage} />
+            <Route path='/product/:id' component={ProductPage} />
+            <Route path='/cart' component={CartPage} />
             <Route exact path='/error' component={ErrorPage} />
             <Redirect to='/error' />
           </Switch>
