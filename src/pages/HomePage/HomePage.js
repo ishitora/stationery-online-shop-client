@@ -1,8 +1,8 @@
 //網站首頁
 import React from 'react';
 
-function Home() {
+function HomePage() {
   return <div>HOME</div>;
 }
 
-export default Home;
+export default HomePage;

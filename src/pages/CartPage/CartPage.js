@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 import customAxios from '../../utils/customAxios';
 
-function Cart() {
+function CartPage() {
   useEffect(() => {
     const reqCart = async () => {
       try {
@@ -18,4 +18,4 @@ function Cart() {
   return <div>購物車</div>;
 }
 
-export default Cart;
+export default CartPage;

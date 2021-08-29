@@ -6,7 +6,7 @@ import customAxios from '../../utils/customAxios';
 import ResultList from './ResultList/ResultList';
 import Pagination from '../../components/Pagination/Pagination';
 
-function SearchResult(props) {
+function SearchResultPage(props) {
   const [productList, setProductList] = useState([]);
   const [resultCount, setResultCount] = useState('');
 
@@ -24,10 +24,6 @@ function SearchResult(props) {
     reqProducts(props.location.search);
   }, [props.location.search]);
 
-  useEffect(() => {
-    console.log('商品', productList);
-  });
-
   const limit = 12;
   const page = qs.parse(props.location.search.slice(1)).page || 1;
 
@@ -43,4 +39,4 @@ function SearchResult(props) {
   );
 }
 
-export default SearchResult;
+export default SearchResultPage;

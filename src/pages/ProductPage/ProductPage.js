@@ -7,14 +7,18 @@ import defaultImage from '../../assets/defaultImage.jpg';
 
 import customAxios from '../../utils/customAxios';
 
-import LinkButton from '../../components/LinkButton/LinkButton';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import LinkButton from '../../components/LinkButton/LinkButton';
+
+import Counter from '../../components/Counter/Counter';
+
 import { addCart } from '../../actions';
 
-function Product(props) {
+function ProductPage(props) {
   const history = useHistory();
 
   const [product, setProduct] = useState([]);
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const reqProduct = async (param) => {
@@ -49,14 +53,25 @@ function Product(props) {
         價格:{product.price} {product.priceDiscount}
       </p>
       <p>{product.details}</p>
-      <button
-        onClick={() => {
-          const p = { productId: product.numberId, quantity: 1 };
-          console.log(p);
-          props.addCart(p);
-        }}>
-        加入購物車
-      </button>
+      {product.stockQuantity !== 0 ? (
+        <>
+          <Counter
+            value={quantity}
+            setValue={setQuantity}
+            max={product.stockQuantity}
+          />
+          <button
+            onClick={() => {
+              const p = { productId: product.numberId, quantity: quantity };
+              console.log(p);
+              props.addCart(p);
+            }}>
+            加入購物車
+          </button>
+        </>
+      ) : (
+        <button disabled>售完補貨中</button>
+      )}
     </div>
   );
 }
@@ -67,4 +82,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(Product);
+export default connect(null, mapDispatchToProps)(ProductPage);

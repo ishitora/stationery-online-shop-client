@@ -1,8 +1,8 @@
 //結帳頁面
 import React from 'react';
 
-function Checkout() {
+function CheckoutPage() {
   return <div>結帳頁面</div>;
 }
 
-export default Checkout;
+export default CheckoutPage;
