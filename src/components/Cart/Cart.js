@@ -2,17 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import countCartTotalQuantity from '../../utils/countCartTotalQuantity';
+
 function Cart(props) {
   return (
     <div>
       <ShoppingCartIcon />
-      {props.cartLength}
+      {countCartTotalQuantity(props.cart)}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  cartLength: state.cart.length,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps)(Cart);
