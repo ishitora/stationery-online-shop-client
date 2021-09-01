@@ -7,6 +7,7 @@ import CategoryMenu from './components/CategoryMenu/CategoryMenu';
 import Footer from './components/Footer/Footer';
 
 import CartPage from './pages/CartPage/CartPage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import HomePage from './pages/HomePage/HomePage';
 import ProductPage from './pages/ProductPage/ProductPage';
@@ -26,6 +27,7 @@ function App() {
             <Route path='/search' component={SearchResultPage} />
             <Route path='/product/:id' component={ProductPage} />
             <Route path='/cart' component={CartPage} />
+            <Route path='/checkout' component={CheckoutPage} />
             <Route exact path='/error' component={ErrorPage} />
             <Redirect to='/error' />
           </Switch>

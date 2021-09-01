@@ -28,22 +28,14 @@ export const userSignUp = (signUpData) => async (dispatch) => {
 };
 
 //登入
-export const userSignIn = (profile) => async (dispatch) => {
-  try {
-    const res = await customAxios.post(`/user/signIn`, profile);
-    console.log('res=', res.data);
-    customAxios.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${res.data.token}`;
-    dispatch({ type: USER_SIGN_IN, payload: res.data });
-  } catch (e) {
-    console.error(e);
-  }
+export const userSignIn = (profile) => {
+  return { type: USER_SIGN_IN, payload: profile };
 };
 
 //登出
-export const userSignOut = () => {
-  return { type: USER_SIGN_OUT };
+export const userSignOut = () => (dispatch) => {
+  customAxios.defaults.headers.common['Authorization'] = ``;
+  dispatch({ type: USER_SIGN_OUT });
 };
 
 export const addCart = (product) => async (dispatch) => {

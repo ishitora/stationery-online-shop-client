@@ -1,9 +1,10 @@
 //登入
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import Input from '../Input/Input';
 import LinkButton from '../LinkButton/LinkButton';
 import useSetState from '../../hooks/useSetState';
-
+import customAxios from '../../utils/customAxios';
 import { userSignIn } from '../../actions/';
 
 function SignIn(props) {
@@ -13,7 +14,7 @@ function SignIn(props) {
   };
 
   const [state, setState] = useSetState(initialState);
-
+  const [errorMessage, setMessage] = useState('');
   const handleChange = (event) => {
     setState({
       [event.target.name]: event.target.value,
@@ -23,8 +24,20 @@ function SignIn(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (state.email && state.password) {
-      await props.signIn(state);
+    try {
+      const res = await customAxios.post(`/user/signIn`, state);
+      console.log('res=', res.data);
+      customAxios.defaults.headers.common[
+        'Authorization'
+      ] = `Bearer ${res.data.token}`;
+
+      props.signIn(res.data);
+    } catch (e) {
+      if (e.response) {
+        setMessage(e.response.data.message);
+      } else {
+        setMessage('伺服器沒有回應');
+      }
     }
   };
   return (
@@ -49,10 +62,10 @@ function SignIn(props) {
           onChange={handleChange}
           placeholder='請輸入密碼'
         />
-
         <LinkButton type='Submit'>登入</LinkButton>
       </form>
-      還沒有帳號嗎?{' '}
+      <p>{errorMessage}</p>
+      還沒有帳號嗎?
       <LinkButton
         onClick={() => {
           props.setChild('signUp');
