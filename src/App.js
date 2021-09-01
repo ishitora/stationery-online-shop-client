@@ -17,7 +17,7 @@ import theme from './utils/theme';
 
 function App() {
   return (
-    <div className='App'>
+    <div className='App' style={{ minHeight: '100vh' }}>
       <ThemeProvider theme={theme}>
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Header />
