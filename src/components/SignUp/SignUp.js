@@ -29,7 +29,7 @@ function SignUp(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(state);
+
     if (
       nameValidation(state.name)[0] &&
       (await emailValidation(state.email))[0] &&

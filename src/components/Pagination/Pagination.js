@@ -8,10 +8,7 @@ function Pagination(props) {
   const history = useHistory();
   const location = useLocation();
   const handleChange = (event, value) => {
-    console.log(value);
-    console.log(location);
     const newQuery = changeQuery(location.search, { page: value });
-    console.log(location.pathname + newQuery);
     history.push(location.pathname + newQuery);
   };
   return (

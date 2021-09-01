@@ -7,7 +7,6 @@ import countCartTotalPrice from './countCartTotalPrice';
 const getCartProductList = async () => {
   try {
     const res = await customAxios.get(`/account/cart`);
-    console.log(res);
     const productList = res.data.cart;
 
     return [

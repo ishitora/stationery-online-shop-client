@@ -4,21 +4,21 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import defaultImage from '../../assets/defaultImage.jpg';
-
 import customAxios from '../../utils/customAxios';
-
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import LinkButton from '../../components/LinkButton/LinkButton';
-
 import Counter from '../../components/Counter/Counter';
 
 import { addCart } from '../../actions';
+import CartSnackbar from './CartSnackbar';
 
 function ProductPage(props) {
-  const history = useHistory();
+  const [open, setOpen] = useState(false);
 
   const [product, setProduct] = useState([]);
   const [quantity, setQuantity] = useState(1);
+
+  const history = useHistory();
 
   useEffect(() => {
     const reqProduct = async (param) => {
@@ -32,6 +32,22 @@ function ProductPage(props) {
     };
     reqProduct(props.match.params.id);
   }, []);
+
+  const addProductToCart = async () => {
+    if (props.isLogin) {
+      const p = { productId: product.numberId, quantity: quantity };
+      try {
+        const res = await customAxios.post(`/account/cart`, p);
+        console.log('res=', res.data);
+        props.addCart(res.data);
+        setOpen(true);
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      setOpen(true);
+    }
+  };
 
   return (
     <div>
@@ -60,21 +76,20 @@ function ProductPage(props) {
             setValue={setQuantity}
             max={product.stockQuantity}
           />
-          <button
-            onClick={() => {
-              const p = { productId: product.numberId, quantity: quantity };
-              console.log(p);
-              props.addCart(p);
-            }}>
-            加入購物車
-          </button>
+          <button onClick={addProductToCart}>加入購物車</button>
         </>
       ) : (
         <button disabled>售完補貨中</button>
       )}
+      <CartSnackbar isLogin={props.isLogin} open={open} setOpen={setOpen} />
     </div>
   );
 }
+
+const mapStateToProps = (state) => ({
+  isLogin: state.isLogin,
+  cart: state.cart,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   addCart: (product) => {
@@ -82,4 +97,4 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-export default connect(null, mapDispatchToProps)(ProductPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductPage);

@@ -38,14 +38,8 @@ export const userSignOut = () => (dispatch) => {
   dispatch({ type: USER_SIGN_OUT });
 };
 
-export const addCart = (product) => async (dispatch) => {
-  try {
-    const res = await customAxios.post(`/account/cart`, product);
-    console.log('res=', res.data);
-    dispatch({ type: ADD_CART, payload: res.data });
-  } catch (e) {
-    console.error(e);
-  }
+export const addCart = (product) => {
+  return { type: ADD_CART, payload: product };
 };
 
 export const updateCart = (product) => async (dispatch) => {

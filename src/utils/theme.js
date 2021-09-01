@@ -16,7 +16,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: ['Noto Sans TC', 'sans-serif'].join(','),
+    fontFamily: ['Helvetica', 'Noto Sans TC', 'sans-serif'].join(','),
   },
 });
 
