@@ -12,31 +12,25 @@ import {
   passwordValidation,
 } from '../../utils/inputValidation';
 
-const initialState = {
+const initState = {
   name: '',
   email: '',
   password: '',
 };
 
 function SignUp(props) {
-  const [state, setState] = useSetState(initialState);
+  const [state, setState] = useSetState(initState);
+  const [hasError, sethasError] = useSetState(initState);
 
-  const handleChange = (event) => {
+  const handleChange = (e) => {
     setState({
-      [event.target.name]: event.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    if (
-      nameValidation(state.name)[0] &&
-      (await emailValidation(state.email))[0] &&
-      passwordValidation(state.password)[0]
-    ) {
-      props.signUp(state);
-    }
+    props.signUp(state);
   };
   return (
     <div>
@@ -50,6 +44,8 @@ function SignUp(props) {
           value={state.email}
           onChange={handleChange}
           placeholder='請輸入電子郵件'
+          hasError={hasError}
+          sethasError={sethasError}
         />
 
         <Input
@@ -61,6 +57,8 @@ function SignUp(props) {
           value={state.name}
           onChange={handleChange}
           placeholder='請輸入暱稱'
+          hasError={hasError}
+          sethasError={sethasError}
         />
         <Input
           id='signUpPassword'
@@ -71,9 +69,15 @@ function SignUp(props) {
           onChange={handleChange}
           validation={passwordValidation}
           placeholder='請輸入密碼'
+          hasError={hasError}
+          sethasError={sethasError}
         />
 
-        <LinkButton type='Submit'> 註冊</LinkButton>
+        <LinkButton
+          type='Submit'
+          disabled={!Object.values(hasError).every((error) => error === false)}>
+          註冊
+        </LinkButton>
       </form>
       已有帳號?
       <LinkButton

@@ -2,7 +2,7 @@ import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 
-function CartSnackbar(props) {
+function ProductSnackbar(props) {
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -11,7 +11,7 @@ function CartSnackbar(props) {
   };
   const alertError = (
     <Alert onClose={handleClose} severity='error'>
-      必須先登入才能加購物車
+      必須登入才能加購物車
     </Alert>
   );
   const alertSuccess = (
@@ -27,4 +27,4 @@ function CartSnackbar(props) {
   );
 }
 
-export default CartSnackbar;
+export default ProductSnackbar;

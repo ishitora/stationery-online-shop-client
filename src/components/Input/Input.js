@@ -18,18 +18,27 @@ const useStyles = makeStyles((theme) => {
 
 function Input(props) {
   const [visibility, setVisibility] = useState(false);
-  const [valid, setValid] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
 
-  const { id, label, type, name, validation, value, onChange, placeholder } =
-    props;
+  const {
+    id,
+    label,
+    type,
+    name,
+    validation,
+    value,
+    onChange,
+    hasError,
+    sethasError,
+    placeholder,
+  } = props;
   const changeVisibility = () => {
     setVisibility(!visibility);
   };
   const handleBlur = async () => {
     if (validation) {
       const [newValid, newErrorMessage] = await validation(value);
-      setValid(newValid);
+      sethasError({ [name]: newValid });
       setErrorMessage(newErrorMessage);
     }
   };
@@ -54,7 +63,9 @@ function Input(props) {
           <VisibilityOffIcon onClick={changeVisibility} />
         )
       ) : null}
-      <span style={{ display: valid ? 'none' : 'block' }}>{errorMessage}</span>
+      <span style={{ display: hasError ? 'block' : 'none' }}>
+        {errorMessage}
+      </span>
     </div>
   );
 }

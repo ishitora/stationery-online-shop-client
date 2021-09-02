@@ -10,7 +10,7 @@ import LinkButton from '../../components/LinkButton/LinkButton';
 import Counter from '../../components/Counter/Counter';
 
 import { addCart } from '../../actions';
-import CartSnackbar from './CartSnackbar';
+import CartSnackbar from './ProductSnackbar';
 
 function ProductPage(props) {
   const [open, setOpen] = useState(false);
