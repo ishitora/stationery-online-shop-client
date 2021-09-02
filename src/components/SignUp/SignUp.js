@@ -1,6 +1,7 @@
 //註冊介面
 import { connect } from 'react-redux';
 import LinkButton from '../LinkButton/LinkButton';
+import SimpleButton from '../SimpleButton/SimpleButton';
 import Input from '../Input/Input';
 import useSetState from '../../hooks/useSetState';
 
@@ -12,15 +13,15 @@ import {
   passwordValidation,
 } from '../../utils/inputValidation';
 
-const initState = {
+const initialState = {
   name: '',
   email: '',
   password: '',
 };
 
 function SignUp(props) {
-  const [state, setState] = useSetState(initState);
-  const [hasError, sethasError] = useSetState(initState);
+  const [state, setState] = useSetState(initialState);
+  const [hasError, sethasError] = useSetState(initialState);
 
   const handleChange = (e) => {
     setState({
@@ -73,11 +74,11 @@ function SignUp(props) {
           sethasError={sethasError}
         />
 
-        <LinkButton
+        <SimpleButton
           type='Submit'
           disabled={!Object.values(hasError).every((error) => error === false)}>
           註冊
-        </LinkButton>
+        </SimpleButton>
       </form>
       已有帳號?
       <LinkButton
