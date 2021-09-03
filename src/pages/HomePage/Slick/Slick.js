@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useState } from 'react';
-import Slider from 'react-slick';
 import { useHistory } from 'react-router-dom';
-
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import useStyles from './style';
 
 function Slick() {
   const [MouseDownX, setMouseDownX] = useState(0);
@@ -12,6 +12,7 @@ function Slick() {
   const settings = {
     dots: true,
     infinite: true,
+    arrows: false,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -31,9 +32,10 @@ function Slick() {
       history.push(value);
     }
   };
+  const classes = useStyles();
   return (
     <div>
-      <Slider {...settings}>
+      <Slider {...settings} className={classes.root}>
         {list.map((item) => (
           <div key={item}>
             <div
@@ -41,13 +43,9 @@ function Slick() {
               onMouseUp={(e) => {
                 handleMouseUp(e, item.to);
               }}
+              className={classes.item}
               style={{
-                margin: '0 auto',
-                width: '1000px',
-                height: '400px',
                 backgroundImage: 'url(' + item.url + '})',
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
               }}></div>
           </div>
         ))}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
-import LinkButton from '../LinkButton/LinkButton';
+import LinkButton from '../../../components/LinkButton/LinkButton';
 
 const useStyles = makeStyles((theme) => {
   console.log(theme);

@@ -8,15 +8,12 @@ const theme = createTheme({
   },
   breakpoints: {
     values: {
-      xs: 0,
-      sm: 600,
-      md: 960,
-      lg: 1200,
-      xl: 1500,
+      sm: 576,
+      xl: 1200,
     },
   },
   typography: {
-    fontFamily: ['Helvetica', 'Noto Sans TC', 'sans-serif'].join(','),
+    fontFamily: ['Lato', 'Noto Sans TC', 'sans-serif'].join(','),
   },
 });
 
