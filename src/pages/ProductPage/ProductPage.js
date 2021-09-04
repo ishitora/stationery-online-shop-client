@@ -2,15 +2,18 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
+import CartSnackbar from './ProductSnackbar/ProductSnackbar';
 
 import defaultImage from '../../assets/defaultImage.jpg';
 import customAxios from '../../utils/customAxios';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import LinkButton from '../../components/LinkButton/LinkButton';
+import SimpleButton from '../../components/SimpleButton/SimpleButton';
+
 import Counter from '../../components/Counter/Counter';
 
 import { addCart } from '../../actions';
-import CartSnackbar from './ProductSnackbar';
+import useStyles from './style';
 
 function ProductPage(props) {
   const [open, setOpen] = useState(false);
@@ -19,6 +22,7 @@ function ProductPage(props) {
   const [quantity, setQuantity] = useState(1);
 
   const history = useHistory();
+  const classes = useStyles();
 
   useEffect(() => {
     const reqProduct = async (param) => {
@@ -50,38 +54,54 @@ function ProductPage(props) {
   };
 
   return (
-    <div>
+    <div className={classes.root}>
       <Breadcrumbs type='category' list={product.categoryList} />
-      <img
-        src={product.images ? product.images[0] : defaultImage}
-        alt='商品圖片'
-      />
-      <h2>{product.name}</h2>
-      <p>
+      <div className={classes.img}>
+        <img
+          src={product.images ? product.images[0] : defaultImage}
+          alt='商品圖片'
+        />
+      </div>
+
+      <div className={classes.data}>
+        <h2 className={classes.title}>{product.name}</h2>
+
         <LinkButton
+          className={classes.brand}
           onClick={() => {
             history.push(`/search/?brand=${product.brand}`);
           }}>
           {product.brand}
         </LinkButton>
-      </p>
-      <p>
-        價格:{product.price} {product.priceDiscount}
-      </p>
-      <p>{product.details}</p>
-      {product.stockQuantity !== 0 ? (
-        <>
-          <Counter
-            value={quantity}
-            setValue={setQuantity}
-            max={product.stockQuantity}
-          />
-          <button onClick={addProductToCart}>加入購物車</button>
-        </>
-      ) : (
-        <button disabled>售完補貨中</button>
-      )}
-      <CartSnackbar isLogin={props.isLogin} open={open} setOpen={setOpen} />
+
+        <p>
+          價格:
+          {product.price === product.priceDiscount ? (
+            <span>{product.price}</span>
+          ) : (
+            <>
+              <span className={classes.price}>{product.price}</span>{' '}
+              <span className={classes.priceDiscount}>
+                {product.priceDiscount}
+              </span>
+            </>
+          )}
+        </p>
+        <p className={classes.details}>{product.details}</p>
+        {product.stockQuantity !== 0 ? (
+          <div style={{ display: 'flex' }}>
+            <SimpleButton onClick={addProductToCart}>加入購物車</SimpleButton>{' '}
+            <Counter
+              value={quantity}
+              setValue={setQuantity}
+              max={product.stockQuantity}
+            />
+          </div>
+        ) : (
+          <SimpleButton disabled>售完補貨中</SimpleButton>
+        )}
+        <CartSnackbar isLogin={props.isLogin} open={open} setOpen={setOpen} />
+      </div>
     </div>
   );
 }

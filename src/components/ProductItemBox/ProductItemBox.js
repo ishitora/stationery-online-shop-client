@@ -1,34 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => {
-  console.log(theme);
-  return {
-    root: {
-      maxWidth: '300px',
-      backgroundColor: '#CCC',
-      '&>a>img': {
-        maxWidth: '300px',
-      },
-    },
-  };
-});
+import useStyles from './style';
 
 function ProductItemBox(props) {
   const { product } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
   return (
     <div className={classes.root}>
       <Link to={`/product/${product.numberId}`}>
-        <img src={product.smallImage} alt={`${product.name}商品圖片`} />
+        <div className={classes.img} role='img' />
       </Link>
-      <Link to={`/product/${product.numberId}`}>
-        <h3>{product.name}</h3>
+      <Link className={classes.title} to={`/product/${product.numberId}`}>
+        {product.name}
       </Link>
-      <h4>
-        {product.price}元 {product.priceDiscount}元
-      </h4>
+      <p>
+        {product.price === product.priceDiscount ? (
+          <span>NT${product.price}</span>
+        ) : (
+          <>
+            <span className={classes.price}>NT${product.price}</span>
+            <span className={classes.priceDiscount}>
+              NT${product.priceDiscount}
+            </span>
+          </>
+        )}
+      </p>
     </div>
   );
 }

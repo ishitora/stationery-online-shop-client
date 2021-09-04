@@ -14,13 +14,25 @@ const useStyles = makeStyles((theme) => {
         backgroundColor: theme.palette.primary.light,
         color: theme.palette.primary.dark,
       },
+      '&:disabled': {
+        backgroundColor: '#DDD',
+        color: '#777',
+        cursor: 'not-allowed',
+      },
     },
   };
 });
 
 function SimpleButton(props) {
   const classes = useStyles();
-  return <button {...props} className={classes.root}></button>;
+  return (
+    <button
+      disabled={props.disabled}
+      {...props}
+      className={`${props.className ? `${props.className} ` : ''}${
+        classes.root
+      }`}></button>
+  );
 }
 
 export default SimpleButton;

@@ -7,7 +7,7 @@ function Breadcrumbs(props) {
   const history = useHistory();
   if (!props.list) return null;
   return (
-    <div>
+    <div style={{ flex: '100%' }}>
       {props.list
         .map((item) => (
           <LinkButton

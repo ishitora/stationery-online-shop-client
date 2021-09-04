@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       width: '100%',
+      backgroundColor: '#DDD',
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         display: 'none',
       },
@@ -28,7 +29,6 @@ const useStyles = makeStyles((theme) => {
         display: 'none',
       },
       '&:hover': {
-        backgroundColor: '#DDD',
         '&> div': { display: 'block' },
       },
     },
