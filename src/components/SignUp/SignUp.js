@@ -4,9 +4,8 @@ import LinkButton from '../LinkButton/LinkButton';
 import SimpleButton from '../SimpleButton/SimpleButton';
 import Input from '../Input/Input';
 import useSetState from '../../hooks/useSetState';
-
 import { userSignUp } from '../../actions/';
-
+import useStyles from './style';
 import {
   nameValidation,
   emailValidation,
@@ -22,7 +21,7 @@ const initialState = {
 function SignUp(props) {
   const [state, setState] = useSetState(initialState);
   const [hasError, sethasError] = useSetState(initialState);
-
+  const classes = useStyles();
   const handleChange = (e) => {
     setState({
       [e.target.name]: e.target.value,
@@ -34,14 +33,9 @@ function SignUp(props) {
     props.signUp(state);
   };
   return (
-    <div>
-      <form
-        style={{
-          display: 'flex',
-          flexFlow: 'column nowrap',
-          alignItems: 'center',
-        }}
-        onSubmit={handleSubmit}>
+    <div className={classes.root}>
+      <h2>註冊帳號</h2>
+      <form onSubmit={handleSubmit}>
         <Input
           id='signUpEmail'
           label='電子郵件'
@@ -81,18 +75,20 @@ function SignUp(props) {
         />
 
         <SimpleButton
-          type='Submit'
+          type='submit'
           disabled={!Object.values(hasError).every((error) => error === false)}>
           註冊
         </SimpleButton>
       </form>
-      已有帳號?
-      <LinkButton
-        onClick={() => {
-          props.setChild('signIn');
-        }}>
-        登入
-      </LinkButton>
+      <span>
+        已有帳號?
+        <LinkButton
+          onClick={() => {
+            props.setChild('signIn');
+          }}>
+          登入
+        </LinkButton>
+      </span>
     </div>
   );
 }

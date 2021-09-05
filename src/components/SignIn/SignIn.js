@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { connect } from 'react-redux';
 import Input from '../Input/Input';
 import LinkButton from '../LinkButton/LinkButton';
+import SimpleButton from '../SimpleButton/SimpleButton';
 import useSetState from '../../hooks/useSetState';
 import customAxios from '../../utils/customAxios';
 import { userSignIn } from '../../actions/';
+import useStyles from './style';
 
 function SignIn(props) {
   const initialState = {
@@ -15,6 +17,8 @@ function SignIn(props) {
 
   const [state, setState] = useSetState(initialState);
   const [errorMessage, setMessage] = useState('');
+  const classes = useStyles(errorMessage);
+
   const handleChange = (event) => {
     setState({
       [event.target.name]: event.target.value,
@@ -41,7 +45,8 @@ function SignIn(props) {
     }
   };
   return (
-    <div>
+    <div className={classes.root}>
+      <h2>使用者登入</h2>
       <form onSubmit={handleSubmit}>
         <Input
           id='signInEmail'
@@ -54,7 +59,7 @@ function SignIn(props) {
         />
 
         <Input
-          id='siInUpPassword'
+          id='signInPassword'
           label='密碼'
           name='password'
           type='password'
@@ -62,16 +67,18 @@ function SignIn(props) {
           onChange={handleChange}
           placeholder='請輸入密碼'
         />
-        <LinkButton type='Submit'>登入</LinkButton>
+        <SimpleButton type='submit'>登入</SimpleButton>
       </form>
       <p>{errorMessage}</p>
-      還沒有帳號嗎?
-      <LinkButton
-        onClick={() => {
-          props.setChild('signUp');
-        }}>
-        註冊
-      </LinkButton>
+      <span>
+        還沒有帳號嗎?
+        <LinkButton
+          onClick={() => {
+            props.setChild('signUp');
+          }}>
+          註冊
+        </LinkButton>
+      </span>
     </div>
   );
 }

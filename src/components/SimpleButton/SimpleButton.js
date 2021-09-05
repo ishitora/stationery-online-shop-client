@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       backgroundColor: theme.palette.primary.main,
-      padding: '1em 1.5em',
+      padding: '0.5em 1.5em',
       border: 'none',
       outline: 'none',
       color: '#EEE',

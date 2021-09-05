@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       position: 'absolute',
-      margin: '20px',
+      top: '100%',
       zIndex: '10',
       width: '100%',
       maxWidth: '200px',

@@ -7,9 +7,9 @@ import SignUp from '../SignUp/SignUp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '60vh',
+    minHeight: '50vh',
     width: '300px',
-    padding: '30px 10px',
+    padding: '50px 10px 20px 10px',
 
     borderRadius: '5px',
     background: theme.palette.background.main,
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
         left: '15px',
         content: '""',
         height: '33px',
-        width: '2px',
+        width: '3px',
         background: theme.palette.secondary.main,
       },
       '&::before': {

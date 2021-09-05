@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => {
     },
     inputBox: {
       position: 'relative',
-      width: '90%',
+      width: '100%',
     },
     input: {
       display: 'block',
-      margin: '0 auto',
+      margin: '0',
       width: '100%',
       padding: '0.5em',
       fontSize: '1em',
@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => {
         transition: 'border-color 0.5s',
         '&::placeholder': {
           color: '#FFF',
+          transition: 'color 0.5s',
         },
       },
 
@@ -45,7 +46,7 @@ const useStyles = makeStyles((theme) => {
       fontSize: '1.5em',
       position: 'absolute',
       top: '50%',
-      right: '5%',
+      right: '0',
       transform: 'translate(-50%,-50%)',
     },
     errorMessage: {

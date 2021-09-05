@@ -26,10 +26,15 @@ const useStyles = makeStyles((theme) => {
       position: 'relative',
       flexDirection: 'column',
       '&>div': {
-        display: 'none',
+        overflow: 'hidden',
+        maxHeight: 0,
+        transition: ' max-height 0.5s',
       },
       '&:hover': {
-        '&> div': { display: 'block' },
+        '&> div': {
+          maxHeight: '500px',
+          transition: ' max-height 0.5s',
+        },
       },
     },
   };
