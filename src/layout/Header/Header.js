@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Drawer from '@material-ui/core/Drawer';
@@ -22,6 +22,7 @@ function Header(props) {
   const [open, setOpen] = useState(false);
 
   const location = useLocation();
+  const history = useHistory();
   const classes = useStyles();
 
   //在換頁時關閉抽屜
@@ -37,6 +38,7 @@ function Header(props) {
       {props.isLogin ? (
         <LinkButton
           onClick={() => {
+            history.push('/');
             props.signOut();
           }}>
           登出
