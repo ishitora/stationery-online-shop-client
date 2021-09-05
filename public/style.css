@@ -1,6 +1,5 @@
 :root {
   font-size: calc(0.5em + 1vw);
-  font-size: minmax(1rem, 16px);
   color: rgb(85, 85, 85);
 }
 

@@ -35,7 +35,13 @@ function SignUp(props) {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form
+        style={{
+          display: 'flex',
+          flexFlow: 'column nowrap',
+          alignItems: 'center',
+        }}
+        onSubmit={handleSubmit}>
         <Input
           id='signUpEmail'
           label='電子郵件'

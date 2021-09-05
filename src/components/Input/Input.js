@@ -1,20 +1,8 @@
 import { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      '&>label': {
-        display: 'block',
-      },
-      '&>span': {
-        color: theme.palette.error.main,
-      },
-    },
-  };
-});
+import useStyles from './style';
 
 function Input(props) {
   const [visibility, setVisibility] = useState(false);
@@ -28,7 +16,7 @@ function Input(props) {
     validation,
     value,
     onChange,
-    hasError,
+
     sethasError,
     placeholder,
   } = props;
@@ -47,25 +35,34 @@ function Input(props) {
   return (
     <div className={classes.root}>
       <label htmlFor={id}>{label}</label>
-      <input
-        id={id}
-        name={name}
-        value={value}
-        type={visibility ? 'text' : type}
-        onChange={onChange}
-        onBlur={handleBlur}
-        placeholder={placeholder}
-      />
-      {type === 'password' ? (
-        visibility ? (
-          <VisibilityIcon onClick={changeVisibility} />
-        ) : (
-          <VisibilityOffIcon onClick={changeVisibility} />
-        )
-      ) : null}
-      <span style={{ display: hasError ? 'block' : 'none' }}>
-        {errorMessage}
-      </span>
+      <div className={classes.inputBox}>
+        <input
+          className={classes.input}
+          id={id}
+          name={name}
+          value={value}
+          type={visibility ? 'text' : type}
+          onChange={onChange}
+          onBlur={handleBlur}
+          placeholder={placeholder}
+        />
+        {type === 'password' ? (
+          visibility ? (
+            <VisibilityIcon
+              className={classes.inputSVG}
+              onClick={changeVisibility}
+            />
+          ) : (
+            <VisibilityOffIcon
+              className={classes.inputSVG}
+              onClick={changeVisibility}
+            />
+          )
+        ) : null}
+      </div>
+      <div style={{ height: '20px', fontSize: '0.7em' }}>
+        <span className={classes.errorMessage}>{errorMessage}</span>
+      </div>
     </div>
   );
 }

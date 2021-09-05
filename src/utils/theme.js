@@ -3,8 +3,8 @@ import { createTheme } from '@material-ui/core/styles';
 const theme = createTheme({
   palette: {
     primary: { main: '#A68C69', dark: '#765f3e', light: '#d8bc97' },
-    secondary: { main: '#2b4470', dark: '#001e44', light: '#5a6f9f' },
-    background: { main: '#EEEEEE' },
+    secondary: { main: '#2b4470', dark: '#001e44', light: '#6db1ff' },
+    background: { main: '#FFF' },
     error: { main: '#FF0000' },
   },
   breakpoints: {

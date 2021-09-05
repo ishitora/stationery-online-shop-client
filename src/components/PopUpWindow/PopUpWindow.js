@@ -7,9 +7,10 @@ import SignUp from '../SignUp/SignUp';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    height: '60vh',
     width: '300px',
     padding: '30px 10px',
-    textAlign: 'center',
+
     borderRadius: '5px',
     background: theme.palette.background.main,
     position: 'relative',
@@ -17,8 +18,8 @@ const useStyles = makeStyles((theme) => ({
       width: '30px',
       height: '30px',
       position: 'absolute',
-      top: '0',
-      right: '0',
+      top: '2px',
+      right: '2px',
       backgroundColor: 'transparent',
       border: 'none',
       outline: 'none',
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
         content: '""',
         height: '33px',
         width: '2px',
-        background: theme.palette.primary.main,
+        background: theme.palette.secondary.main,
       },
       '&::before': {
         transform: 'rotate(45deg)',
