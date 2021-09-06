@@ -3,25 +3,20 @@ import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import CheckoutSuccess from './CheckoutSuccess/CheckoutSuccess';
+import CheckoutItemList from './CheckoutItemList/CheckoutItemList';
+import CheckoutPaymentMethod from './CheckoutPaymentMethod/CheckoutPaymentMethod';
+import CheckoutInformation from './CheckoutInformation/CheckoutInformation';
 
-import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 import SimpleButton from '../../components/SimpleButton/SimpleButton';
-import Input from '../../components/Input/Input';
+
 import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 
 import useSetState from '../../hooks/useSetState';
 
 import customAxios from '../../utils/customAxios';
 import getCartProductList from '../../utils/getCartProductList';
-
 import { clearCart } from '../../actions';
-
-import {
-  nameValidation,
-  addressValidation,
-  phoneNumberValidation,
-  postCodeValidation,
-} from '../../utils/inputValidation';
+import useStyles from './style';
 
 const initialState = {
   payMethod: '貨到付款',
@@ -42,6 +37,8 @@ function CheckoutPage(props) {
     postCode: '',
   });
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+
+  const classes = useStyles();
   useEffect(() => {
     if (props.isLogin) {
       const reqCart = async () => {
@@ -80,84 +77,15 @@ function CheckoutPage(props) {
   }
 
   return (
-    <div>
-      <h2>商品</h2>
-      {productList.map((item) => (
-        <CheckoutItem key={item.numberId} {...item} />
-      ))}
-      <p>總價格:{totalPrice}</p>
-      請選擇付款方式:
-      <div>
-        <input
-          type='radio'
-          id='cashOnDelivery'
-          name='paymentMethod'
-          value='貨到付款'
-          onChange={handleChange}
-          checked
-        />
-        <label htmlFor='cashOnDelivery'>貨到付款</label>
-      </div>
-      <div>
-        <input
-          type='radio'
-          id='creditCard'
-          name='paymentMethod'
-          value='信用卡'
-          disabled
-        />
-        <label htmlFor='creditCard' disabled>
-          信用卡付款
-        </label>
-      </div>
-      <h2>收件人資料</h2>
-      <Input
-        id='postCode'
-        label='郵遞區號'
-        name='postCode'
-        type='text'
-        value={state.postCode}
-        onChange={handleChange}
-        placeholder='請輸入郵遞區號'
-        validation={postCodeValidation}
+    <div className={classes.root}>
+      <CheckoutItemList productList={productList} totalPrice={totalPrice} />
+      <CheckoutPaymentMethod handleChange={handleChange} />
+
+      <CheckoutInformation
         hasError={hasError}
         sethasError={sethasError}
-      />
-      <Input
-        id='address'
-        label='收件地址'
-        name='address'
-        type='text'
-        value={state.address}
-        onChange={handleChange}
-        placeholder='請輸入收件地址'
-        validation={addressValidation}
-        hasError={hasError}
-        sethasError={sethasError}
-      />
-      <Input
-        id='name'
-        label='收件人'
-        name='name'
-        type='text'
-        value={state.name}
-        onChange={handleChange}
-        placeholder='請輸入收件人姓名'
-        validation={nameValidation}
-        hasError={hasError}
-        sethasError={sethasError}
-      />
-      <Input
-        id='phoneNumber'
-        label='收件人手機'
-        name='phoneNumber'
-        type='text'
-        value={state.phoneNumber}
-        onChange={handleChange}
-        placeholder='請輸入手機'
-        validation={phoneNumberValidation}
-        hasError={hasError}
-        sethasError={sethasError}
+        handleChange={handleChange}
+        {...state}
       />
       <SimpleButton
         disabled={!Object.values(hasError).every((error) => error === false)}
