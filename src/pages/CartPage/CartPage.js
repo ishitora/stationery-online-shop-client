@@ -1,10 +1,12 @@
 //購物車頁面
 import { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 
-import CartItem from '../../components/CartItem/CartItem';
-import SimpleButton from '../../components/SimpleButton/SimpleButton';
+import CartList from './CartList/CartList';
+import CartCheckout from './CartCheckout/CartCheckout';
+import CartCheckoutPhone from './CartCheckoutPhone/CartCheckoutPhone'
+
 import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 import getCartProductList from '../../utils/getCartProductList';
 
@@ -14,7 +16,7 @@ function CartPage(props) {
   const [productList, setPoductList] = useState([]);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-  const history = useHistory();
+
   const classes = useStyles();
   useEffect(() => {
     if (props.isLogin) {
@@ -35,44 +37,9 @@ function CartPage(props) {
 
   return (
     <div className={classes.root}>
-      <div className={classes.cart}>
-        <div className={classes.title}>
-          <span>商品</span>
-          <span>資訊</span>
-          <span>總價</span>
-        </div>
-        {productList.map((item) => (
-          <CartItem key={item.numberId} {...item} />
-        ))}
-        <SimpleButton
-          className={classes.clearCart}
-          onClick={() => {
-            props.clearCart();
-          }}>
-          清空購物車
-        </SimpleButton>
-      </div>
-      <div className={classes.checkOut}>
-        <h2>合計</h2>
-        <p>共{totalQuantity}件商品</p>
-        <p>總價:NT${totalPrice}</p>
-
-        <SimpleButton
-          onClick={() => {
-            history.push('/checkout');
-          }}>
-          結帳
-        </SimpleButton>
-      </div>
-      <div className={classes.checkOutPhone}>
-        <span>總價:NT${totalPrice}</span>
-        <SimpleButton
-          onClick={() => {
-            history.push('/checkout');
-          }}>
-          結帳
-        </SimpleButton>
-      </div>
+      <CartList productList={productList} />
+      <CartCheckout totalQuantity={totalQuantity} totalPrice={totalPrice} />
+      <CartCheckoutPhone   totalPrice={totalPrice}/>
     </div>
   );
 }
