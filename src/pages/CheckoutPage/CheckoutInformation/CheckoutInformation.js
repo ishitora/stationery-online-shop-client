@@ -1,5 +1,6 @@
 import React from 'react';
 import Input from '../../../components/Input/Input';
+import useStyles from './style';
 import {
   nameValidation,
   addressValidation,
@@ -16,9 +17,10 @@ function CheckoutInformation(props) {
     name,
     phoneNumber,
   } = props;
+  const classes = useStyles();
   return (
     <div>
-      <h2>收件人資料</h2>
+      <h2 className={classes.title}>收件人資料</h2>
       <Input
         id='postCode'
         label='郵遞區號'

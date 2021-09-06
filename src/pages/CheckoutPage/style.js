@@ -11,12 +11,21 @@ const useStyles = makeStyles((theme) => {
       '&>div': {
         width: '90%',
         margin: '0 auto 2em auto',
+
+        [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+          width: '70%',
+        },
+
+        [theme.breakpoints.up(theme.breakpoints.values.xl)]: {
+          width: '50%',
+        },
       },
 
       '&>button': {
         fontSize: '1.5rem',
         width: '70%',
         margin: '0 auto',
+        maxWidth: '400px',
       },
     },
   };

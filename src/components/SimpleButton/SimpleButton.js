@@ -10,9 +10,11 @@ const useStyles = makeStyles((theme) => {
       outline: 'none',
       color: '#EEE',
       cursor: 'pointer',
+      transition: 'all 1s',
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
         color: theme.palette.primary.dark,
+        transition: 'all 1s',
       },
       '&:disabled': {
         backgroundColor: '#DDD',
