@@ -9,10 +9,11 @@ const theme = createTheme({
     logoColor: { main: '#A68C69', dark: '#765f3e', light: '#d8bc97' },
   },
   breakpoints: {
-    values: {
-      sm: 576,
-      xl: 1200,
-    },
+    xs: 0,
+    sm: 576,
+    md: 960,
+    lg: 1200,
+    xl: 1920,
   },
   typography: {
     fontFamily: ['Lato', 'sans-serif'].join(','),

@@ -10,21 +10,23 @@ function ProductItemBox(props) {
       <Link to={`/product/${product.numberId}`}>
         <div className={classes.img} role='img' />
       </Link>
-      <Link className={classes.title} to={`/product/${product.numberId}`}>
-        {product.name}
-      </Link>
-      <p>
-        {product.price === product.priceDiscount ? (
-          <span>NT${product.price}</span>
-        ) : (
-          <>
-            <span className={classes.price}>NT${product.price}</span>
-            <span className={classes.priceDiscount}>
-              NT${product.priceDiscount}
-            </span>
-          </>
-        )}
-      </p>
+      <div>
+        <Link className={classes.title} to={`/product/${product.numberId}`}>
+          {product.name}
+        </Link>
+        <p>
+          {product.price === product.priceDiscount ? (
+            <span>NT${product.price}</span>
+          ) : (
+            <>
+              <span className={classes.price}>NT${product.price}</span>
+              <span className={classes.priceDiscount}>
+                NT${product.priceDiscount}
+              </span>
+            </>
+          )}
+        </p>
+      </div>
     </div>
   );
 }

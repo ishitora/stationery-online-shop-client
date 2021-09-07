@@ -5,8 +5,7 @@ import { connect } from 'react-redux';
 
 import CartList from './CartList/CartList';
 import CartCheckout from './CartCheckout/CartCheckout';
-import CartCheckoutPhone from './CartCheckoutPhone/CartCheckoutPhone'
-
+import CartCheckoutPhone from './CartCheckoutPhone/CartCheckoutPhone';
 import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 import getCartProductList from '../../utils/getCartProductList';
 
@@ -39,7 +38,7 @@ function CartPage(props) {
     <div className={classes.root}>
       <CartList productList={productList} />
       <CartCheckout totalQuantity={totalQuantity} totalPrice={totalPrice} />
-      <CartCheckoutPhone   totalPrice={totalPrice}/>
+      <CartCheckoutPhone totalPrice={totalPrice} />
     </div>
   );
 }
