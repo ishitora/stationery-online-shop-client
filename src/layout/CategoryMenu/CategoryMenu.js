@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import categoryData from '../../config/category';
 import CategoryList from './CategoryList/CategoryList';
@@ -9,22 +9,21 @@ import useStyles from './style';
 
 function CategoryMenu() {
   const classes = useStyles();
-
+  const history = useHistory();
   return (
-    <div className={classes.root}>
-      <ul>
-        {categoryData.map((category) => (
-          <li key={category.link}>
-            <div className={classes.box}>
-              <Link to={`/search/?category=${category.link}`}>
-                <LinkButton>{category.name}</LinkButton>
-              </Link>
-              <CategoryList childCategory={category.child} />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className={classes.root}>
+      {categoryData.map((category) => (
+        <li key={category.link} className={classes.box}>
+          <LinkButton
+            onClick={() => {
+              history.push(`/search/?category=${category.link}`);
+            }}>
+            {category.name}
+          </LinkButton>
+          <CategoryList childCategory={category.child} />
+        </li>
+      ))}
+    </ul>
   );
 }
 

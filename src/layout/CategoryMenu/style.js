@@ -4,34 +4,38 @@ const useStyles = makeStyles((theme) => {
   console.log(theme);
   return {
     root: {
+      height: '2.5rem',
       width: '100%',
       backgroundColor: '#DDD',
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         display: 'none',
       },
-      '&>ul': {
-        display: 'flex',
-        justifyContent: 'space-around',
-        listStyleType: 'none',
-        alignContent: 'center',
-        '&>li': {
-          flex: '20%',
-        },
-      },
-    },
-    box: {
-      width: '100%',
-      alignItems: 'center',
       display: 'flex',
+      justifyContent: 'space-around',
+      listStyleType: 'none',
+      alignItems: 'center',
+      '&>li': {},
+    },
+
+    box: {
+      height: '100%',
+      flex: '20%',
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      alignItems: 'center',
       position: 'relative',
-      flexDirection: 'column',
-      '&>div': {
+      '&>button': {
+        position: 'relative',
+        top: '1.25rem',
+        transform: 'translateY(-50%)',
+      },
+      '&>ul': {
         overflow: 'hidden',
         maxHeight: 0,
         transition: ' max-height 0.5s',
       },
       '&:hover': {
-        '&> div': {
+        '&>ul': {
           maxHeight: '500px',
           transition: ' max-height 0.5s',
         },

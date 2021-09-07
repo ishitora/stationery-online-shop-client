@@ -17,6 +17,7 @@ const conversionTable = {
   'loose-leaf': '活頁紙',
   office: '事務用品',
   ruler: '尺',
+  scissors: '剪刀',
   storage: '收納',
   folder: '資料夾/活頁夾',
   'pencil-case': '筆袋/筆盒',

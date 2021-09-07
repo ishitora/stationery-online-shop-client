@@ -6,7 +6,7 @@ const theme = createTheme({
     secondary: { main: '#2b4470', dark: '#001e44', light: '#6db1ff' },
     background: { main: '#FFF' },
     error: { main: '#FF0000' },
-    logoColor: { main: '#A68C69', dark: '#765f3e', light: '#d8bc97' },
+    logoColor: { main: '#c4af9a', dark: '#93806c', light: '#f7e1cb' },
   },
   breakpoints: {
     xs: 0,

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => {
         marginTop: '1.5em',
       },
       '&>h2': {
-        fontSize: '1.8em',
+        fontSize: '21px',
         fontWeight: 700,
       },
       '&>form': {

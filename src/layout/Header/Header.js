@@ -5,10 +5,13 @@ import { connect } from 'react-redux';
 
 import Drawer from '@material-ui/core/Drawer';
 
+import SearchBar from './SearchBar/SearchBar';
+
 import logo from '../../assets/logo.png';
 import Modal from '../../components/Modal/Modal';
 import PopUpWindow from '../../components/PopUpWindow/PopUpWindow';
 
+import SimpleButton from '../../components/SimpleButton/SimpleButton';
 import LinkButton from '../../components/LinkButton/LinkButton';
 import CartButton from './CartButton/CartButton';
 import DehazeButton from './DehazeButton/DehazeButton';
@@ -35,26 +38,6 @@ function Header(props) {
       <Link to='/'>
         <img className={classes.logo} src={logo} alt='LOGO' />
       </Link>
-      {props.isLogin ? (
-        <LinkButton
-          onClick={() => {
-            history.push('/');
-            props.signOut();
-          }}>
-          登出
-        </LinkButton>
-      ) : (
-        <LinkButton
-          onClick={() => {
-            setShowModal(!showModal);
-          }}>
-          註冊/登入
-        </LinkButton>
-      )}
-
-      <Link to='/cart'>
-        <CartButton />
-      </Link>
       {showModal ? (
         <Modal>
           <PopUpWindow showModal={showModal} setShowModal={setShowModal} />
@@ -64,7 +47,31 @@ function Header(props) {
       <Drawer variant='persistent' anchor='left' open={open}>
         <CategoryMenuPhone />
       </Drawer>
-      <DehazeButton open={open} setOpen={setOpen} />
+      <SearchBar />
+
+      {props.isLogin ? (
+        <LinkButton
+          onClick={() => {
+            history.push('/');
+            props.signOut();
+          }}>
+          登出
+        </LinkButton>
+      ) : (
+        <SimpleButton
+          className={classes.login}
+          onClick={() => {
+            setShowModal(!showModal);
+          }}>
+          註冊/登入
+        </SimpleButton>
+      )}
+      <div>
+        <Link to='/cart'>
+          <CartButton />
+        </Link>
+        <DehazeButton open={open} setOpen={setOpen} />
+      </div>
     </div>
   );
 }
