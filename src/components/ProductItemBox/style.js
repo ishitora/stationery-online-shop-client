@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     img: {
+      position: 'relative',
       minWidth: '120px',
       width: '40vw',
       height: '40vw',
@@ -48,6 +49,29 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.up(theme.breakpoints.values.lg)]: {
         width: '280px',
         height: '280px',
+      },
+    },
+    soldOut: {
+      backgroundColor: 'rgba(200,200,200,0.7)',
+      width: '100%',
+      padding: '0.5em 0',
+      position: 'absolute',
+      transform: 'translateY(-50%)',
+      top: '50%',
+      display: (props) =>
+        props.product
+          ? props.product.status === '可購買'
+            ? 'none'
+            : 'block'
+          : 'none',
+      '&>h3': {
+        fontSize: '1.5rem',
+        textAlign: 'center',
+        color: '#777',
+        fontWeight: 700,
+        '&:active': {
+          color: 'black',
+        },
       },
     },
     title: {

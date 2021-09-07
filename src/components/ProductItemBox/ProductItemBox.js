@@ -8,7 +8,11 @@ function ProductItemBox(props) {
   return (
     <div className={classes.root}>
       <Link to={`/product/${product.numberId}`}>
-        <div className={classes.img} role='img' />
+        <div className={classes.img} role='img'>
+          <div className={classes.soldOut}>
+            <h3>SOLD OUT</h3>
+          </div>
+        </div>
       </Link>
       <div>
         <Link className={classes.title} to={`/product/${product.numberId}`}>
