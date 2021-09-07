@@ -4,7 +4,7 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import Badge from '@material-ui/core/Badge';
 
-import countCartTotalQuantity from '../../../utils/countCartTotalQuantity';
+import { countCartTotalQuantity } from '../../../utils/getCartProductList';
 
 function CartButton(props) {
   return (

@@ -1,10 +1,11 @@
-import React from 'react';
 import CartItem from '../../../components/CartItem/CartItem';
 import SimpleButton from '../../../components/SimpleButton/SimpleButton';
+
 import useStyles from './style';
+
 function CartList(props) {
   const classes = useStyles();
-  const { productList } = props;
+  const { productList,clearCart } = props;
   return (
     <div className={classes.root}>
       <div className={classes.title}>
@@ -18,12 +19,14 @@ function CartList(props) {
       <SimpleButton
         className={classes.clearCart}
         onClick={() => {
-          props.clearCart();
+         clearCart();
         }}>
         清空購物車
       </SimpleButton>
     </div>
   );
 }
+
+
 
 export default CartList;

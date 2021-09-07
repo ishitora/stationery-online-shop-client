@@ -8,11 +8,9 @@ import CheckoutPaymentMethod from './CheckoutPaymentMethod/CheckoutPaymentMethod
 import CheckoutInformation from './CheckoutInformation/CheckoutInformation';
 
 import SimpleButton from '../../components/SimpleButton/SimpleButton';
-
 import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 
 import useSetState from '../../hooks/useSetState';
-
 import customAxios from '../../utils/customAxios';
 import getCartProductList from '../../utils/getCartProductList';
 import { clearCart } from '../../actions';

@@ -60,6 +60,7 @@ function ProductPage(props) {
         setOpen={setOpen}
         quantity={quantity}
         setQuantity={setQuantity}
+        isLogin={props.isLogin}
       />
     </div>
   );
