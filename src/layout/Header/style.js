@@ -11,10 +11,10 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         alignContent: 'space-around',
         flexFlow: 'row wrap',
-        height: '100px',
+        height: '80px',
       },
     },
-    logo: { height: '35px', marginLeft: '1em' },
+    logo: { height: 'calc(1.5rem + 10px)', marginLeft: '1em' },
     item: {
       margin: '0 auto',
       width: '100%',
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: theme.palette.logoColor.dark,
       borderRadius: '100px',
       padding: '0.5em 0.8em',
-
+      fontSize: 'calc(0.6rem + 5px)',
       '&:hover': {
         backgroundColor: theme.palette.logoColor.light,
         color: theme.palette.logoColor.dark,

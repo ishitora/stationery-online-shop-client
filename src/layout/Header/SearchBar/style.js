@@ -11,15 +11,16 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         order: 1,
         flex: '0 0 100%',
+        marginBottom: '1rem',
       },
     },
     input: {
       border: 'none',
       fontSize: '12px',
       padding: '0.5rem 1rem',
-      borderRadius: '100px',
-      width: '90%',
+      width: '85%',
       transition: 'all 0.2s',
+      borderRadius: '0.3em',
       '&:focus': {
         outline: 'none',
         transform: 'scale(1.1,1.1)',

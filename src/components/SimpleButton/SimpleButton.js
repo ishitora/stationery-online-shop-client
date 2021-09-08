@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => {
       outline: 'none',
       color: '#EEE',
       cursor: 'pointer',
+      borderRadius: '0.3em',
       transition: 'all 1s',
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
