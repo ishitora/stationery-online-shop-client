@@ -39,7 +39,6 @@ function SignUp(props) {
     try {
       setIsRegistering(true);
       const res = await customAxios.post(`/user/signUp`, state);
-      console.log('res=', res.data);
       props.signUp(res.data);
       setIsRegistering(false);
     } catch (e) {

@@ -37,7 +37,6 @@ function SignIn(props) {
     try {
       setIsLogining(true);
       const res = await customAxios.post(`/user/signIn`, state);
-      console.log('res=', res.data);
       customAxios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${res.data.token}`;

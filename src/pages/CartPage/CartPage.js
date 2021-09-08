@@ -19,7 +19,6 @@ function CartPage(props) {
   const { cart, isLogin, history, clearCart } = props;
 
   useEffect(() => {
-    console.log(props);
     if (isLogin) {
       const reqCart = async () => {
         const [list, quantity, price] = await getCartProductList();

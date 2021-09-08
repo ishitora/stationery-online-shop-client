@@ -16,8 +16,12 @@ function ResSlider(props) {
   const classes = useStyles();
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await customAxios.get(`/product/random/${count}`);
-      setProductList(res.data.product);
+      try {
+        const res = await customAxios.get(`/product/random/${count}`);
+        setProductList(res.data.product);
+      } catch (e) {
+        console.error(e);
+      }
     };
     fetchProduct();
   }, [id]);

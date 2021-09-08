@@ -49,7 +49,9 @@ function ProductInformation(props) {
       <p className={classes.details}>{product.details}</p>
       {product.stockQuantity !== 0 ? (
         <div style={{ display: 'flex' }}>
-          <SimpleButton disabled={isAddingCart} onClick={addProductToCart}>
+          <SimpleButton
+            disabled={isAddingCart || product.price ? false : true}
+            onClick={addProductToCart}>
             加入購物車
             {isAddingCart ? (
               <CircularProgress size={24} className={classes.buttonProgress} />

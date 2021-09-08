@@ -27,9 +27,8 @@ function ProductPage(props) {
     const reqProduct = async (param) => {
       try {
         const res = await customAxios.get(`/product/${param}`);
-        console.log(res);
         setProduct(res.data.product);
-        setQuantity(1); //切換時重制counter技術
+        setQuantity(1); //切換時重置counter計數
       } catch (e) {
         console.error(e);
       }
@@ -43,7 +42,6 @@ function ProductPage(props) {
       setIsAddingCart(true);
       try {
         const res = await customAxios.post(`/account/cart`, p);
-        console.log('res=', res.data);
         refreshCart(res.data);
         setOpen(true);
         setIsAddingCart(false);

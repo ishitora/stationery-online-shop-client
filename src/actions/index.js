@@ -35,7 +35,6 @@ export const refreshCart = (product) => {
 export const updateCart = (product) => async (dispatch) => {
   try {
     const res = await customAxios.put(`/account/cart`, product);
-    console.log('res=', res.data);
     dispatch({ type: REFRESH_CART, payload: res.data });
   } catch (e) {
     console.error(e);
@@ -45,7 +44,6 @@ export const updateCart = (product) => async (dispatch) => {
 export const deleteCart = (product) => async (dispatch) => {
   try {
     const res = await customAxios.patch(`/account/cart`, product);
-    console.log('res=', res.data);
     dispatch({ type: REFRESH_CART, payload: res.data });
   } catch (e) {
     console.error(e);
@@ -54,8 +52,7 @@ export const deleteCart = (product) => async (dispatch) => {
 
 export const clearCart = () => async (dispatch) => {
   try {
-    const res = await customAxios.delete(`/account/clearCart`);
-    console.log('res=', res.data);
+    await customAxios.delete(`/account/clearCart`);
     dispatch({ type: CLEAR_CART });
   } catch (e) {
     console.error(e);

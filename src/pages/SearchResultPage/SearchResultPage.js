@@ -33,8 +33,6 @@ function SearchResultPage(props) {
   }, [props.location.search]);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(changeQuery(props.location.search, { soft: e.target.value }));
     props.history.push(
       `/search/${changeQuery(props.location.search, {
         soft: e.target.value,

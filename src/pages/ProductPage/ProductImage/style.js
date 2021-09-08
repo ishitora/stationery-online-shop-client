@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import defaultImage from '../../../assets/defaultImage.jpg';
 const useStyles = makeStyles((theme) => {
-  console.log(theme);
   return {
     root: {
       width: '90vw',

@@ -62,7 +62,6 @@ function CheckoutPage(props) {
   };
 
   const createOrder = async () => {
-    console.log('訂單:', state);
     try {
       setIsCreating(true);
       await customAxios.post('/order', state);
