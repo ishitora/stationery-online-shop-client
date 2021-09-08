@@ -8,7 +8,7 @@ import useStyles from './style';
 function HomePage() {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div id='home' className={classes.root}>
       <Slick />
       <ResSlider count={8} title='推薦商品' />
     </div>

@@ -1,6 +1,6 @@
 :root {
   font-size: calc(0.5em + 1vw);
-  font-family: Lato, sans-serif;
+  font-family: 'Lato', 'Noto Sans TC', sans-serif;
   color: rgb(85, 85, 85);
 }
 

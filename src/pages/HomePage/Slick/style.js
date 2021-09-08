@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   return {
     root: {
       marginBottom: '30px',
@@ -11,6 +11,12 @@ const useStyles = makeStyles(() => {
       height: '250px',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+        height: '350px',
+      },
+      [theme.breakpoints.up(theme.breakpoints.values.lg)]: {
+        height: '400px',
+      },
     },
   };
 });
