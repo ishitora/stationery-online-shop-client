@@ -31,7 +31,7 @@ function App() {
         <BrowserRouter basename={process.env.PUBLIC_URL}>
           <Header />
           {notRenderInCheckout(CategoryMenu)}
-          <div style={{ flex: 1, padding: '2rem 0' }}>
+          <div style={{ flex: 1 }}>
             <Switch>
               <Route exact path='/' component={HomePage} />
               <Route path='/search' component={SearchResultPage} />
