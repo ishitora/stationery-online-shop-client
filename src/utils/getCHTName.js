@@ -3,7 +3,7 @@
 const conversionTable = {
   stationery: '所有文具',
   writing: '筆記具',
-  pencel: '鉛筆',
+  pencil: '鉛筆',
   'mechanical-pencil': '自動鉛筆',
   pen: '原子筆/中性筆',
   'fountain-pen': '鋼筆',

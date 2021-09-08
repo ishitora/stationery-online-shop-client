@@ -3,7 +3,7 @@ const stationery = [
     link: 'writing',
     name: '筆記具',
     child: [
-      { link: 'pencel', name: '鉛筆' },
+      { link: 'pencil', name: '鉛筆' },
       { link: 'mechanical-pencil', name: '自動鉛筆' },
       { link: 'pen', name: '原子筆/中性筆' },
       { link: 'fountain-pen', name: '鋼筆' },
