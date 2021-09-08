@@ -1,28 +1,28 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => {
+  console.log(theme);
   return {
     root: {
-      padding: '0 4vw',
+      padding: '2em 4vw',
       display: 'flex',
-      flexFlow: 'row wrap',
+      flexFlow: 'column nowrap',
+      alignItems: 'center',
       margin: '0 auto',
       '&> * + *': {
         marginTop: '2rem',
       },
-      '&> *': {
-        width: '100%',
-
-        [theme.breakpoints.up(theme.breakpoints.values.xl)]: {
-          width: '40%',
-        },
-      },
-
-      [theme.breakpoints.up(theme.breakpoints.values.xl)]: {
+    },
+    main: {
+      width: '100%',
+      maxWidth: '1280px',
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+        flexFlow: 'row nowrap',
         justifyContent: 'space-around',
       },
     },
-
   };
 });
 

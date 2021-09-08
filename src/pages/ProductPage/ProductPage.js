@@ -8,6 +8,7 @@ import ProductInformation from './ProductInformation/ProductInformation';
 
 import customAxios from '../../utils/customAxios';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import ResSlider from '../../components/ResSlider/ResSlider';
 
 import { addCart } from '../../actions';
 import useStyles from './style';
@@ -21,6 +22,7 @@ function ProductPage(props) {
   const classes = useStyles();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const reqProduct = async (param) => {
       try {
         const res = await customAxios.get(`/product/${param}`);
@@ -31,7 +33,7 @@ function ProductPage(props) {
       }
     };
     reqProduct(props.match.params.id);
-  }, []);
+  }, [props.match.params.id]);
 
   const addProductToCart = async () => {
     if (props.isLogin) {
@@ -50,18 +52,23 @@ function ProductPage(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <Breadcrumbs type='category' list={product.categoryList} />
-      <ProductImage product={product} />
-      <ProductInformation
-        product={product}
-        addProductToCart={addProductToCart}
-        open={open}
-        setOpen={setOpen}
-        quantity={quantity}
-        setQuantity={setQuantity}
-        isLogin={props.isLogin}
-      />
+    <div>
+      <div className={classes.root}>
+        <Breadcrumbs type='category' list={product.categoryList} />
+        <div className={classes.main}>
+          <ProductImage product={product} />
+          <ProductInformation
+            product={product}
+            addProductToCart={addProductToCart}
+            open={open}
+            setOpen={setOpen}
+            quantity={quantity}
+            setQuantity={setQuantity}
+            isLogin={props.isLogin}
+          />
+        </div>
+      </div>
+      <ResSlider count={8} title='相關商品' />
     </div>
   );
 }

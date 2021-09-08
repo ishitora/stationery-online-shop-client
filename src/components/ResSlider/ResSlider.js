@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
 import Slider from 'react-slick';
 
 import settings from './settings';
@@ -7,9 +8,11 @@ import ProductItemBox from '../ProductItemBox/ProductItemBox';
 import customAxios from '../../utils/customAxios';
 
 import useStyles from './style';
+
 function ResSlider(props) {
   const { count, title } = props;
   const [productList, setProductList] = useState([]);
+  const { id } = useParams();
   const classes = useStyles();
   useEffect(() => {
     const fetchProduct = async () => {
@@ -17,7 +20,7 @@ function ResSlider(props) {
       setProductList(res.data.product);
     };
     fetchProduct();
-  }, []);
+  }, [id]);
 
   return (
     <div className={classes.root}>
