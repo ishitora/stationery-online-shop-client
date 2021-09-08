@@ -5,7 +5,7 @@ import useStyles from './style';
 
 function CartList(props) {
   const classes = useStyles();
-  const { productList,clearCart } = props;
+  const { productList, clearCart } = props;
   return (
     <div className={classes.root}>
       <div className={classes.title}>
@@ -19,14 +19,12 @@ function CartList(props) {
       <SimpleButton
         className={classes.clearCart}
         onClick={() => {
-         clearCart();
+          clearCart();
         }}>
         清空購物車
       </SimpleButton>
     </div>
   );
 }
-
-
 
 export default CartList;

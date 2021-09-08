@@ -16,7 +16,7 @@ function CartPage(props) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const classes = useStyles();
-  const { cart, isLogin, history } = props;
+  const { cart, isLogin, history, clearCart } = props;
 
   useEffect(() => {
     console.log(props);

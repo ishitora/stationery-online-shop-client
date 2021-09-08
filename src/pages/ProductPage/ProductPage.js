@@ -10,7 +10,7 @@ import customAxios from '../../utils/customAxios';
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
 import ResSlider from '../../components/ResSlider/ResSlider';
 
-import { addCart } from '../../actions';
+import { refreshCart } from '../../actions';
 import useStyles from './style';
 
 function ProductPage(props) {
@@ -28,6 +28,7 @@ function ProductPage(props) {
         const res = await customAxios.get(`/product/${param}`);
         console.log(res);
         setProduct(res.data.product);
+        setQuantity(1); //切換時重制counter技術
       } catch (e) {
         console.error(e);
       }
@@ -41,7 +42,7 @@ function ProductPage(props) {
       try {
         const res = await customAxios.post(`/account/cart`, p);
         console.log('res=', res.data);
-        props.addCart(res.data);
+        props.refreshCart(res.data);
         setOpen(true);
       } catch (e) {
         console.error(e);
@@ -79,8 +80,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addCart: (product) => {
-    dispatch(addCart(product));
+  refreshCart: (product) => {
+    dispatch(refreshCart(product));
   },
 });
 

@@ -4,9 +4,7 @@ import {
   USER_SIGN_IN,
   USER_SIGN_UP,
   USER_SIGN_OUT,
-  ADD_CART,
-  UPDATE_CART,
-  DELETE_CART,
+  REFRESH_CART,
   CLEAR_CART,
 } from './type';
 
@@ -38,15 +36,15 @@ export const userSignOut = () => (dispatch) => {
   dispatch({ type: USER_SIGN_OUT });
 };
 
-export const addCart = (product) => {
-  return { type: ADD_CART, payload: product };
+export const refreshCart = (product) => {
+  return { type: REFRESH_CART, payload: product };
 };
 
 export const updateCart = (product) => async (dispatch) => {
   try {
     const res = await customAxios.put(`/account/cart`, product);
     console.log('res=', res.data);
-    dispatch({ type: UPDATE_CART, payload: res.data });
+    dispatch({ type: REFRESH_CART, payload: res.data });
   } catch (e) {
     console.error(e);
   }
@@ -56,7 +54,7 @@ export const deleteCart = (product) => async (dispatch) => {
   try {
     const res = await customAxios.patch(`/account/cart`, product);
     console.log('res=', res.data);
-    dispatch({ type: DELETE_CART, payload: res.data });
+    dispatch({ type: REFRESH_CART, payload: res.data });
   } catch (e) {
     console.error(e);
   }
