@@ -10,15 +10,6 @@ const useStyles = makeStyles((theme) => {
         marginTop: '1em',
       },
     },
-    title: {
-      textAlign: 'center',
-      fontSize: '1.8em',
-      fontWeight: 700,
-      color: '#FFF',
-      padding: '2px',
-      backgroundColor: '#AAA',
-      marginBottom: '1em',
-    },
     total: {
       fontSize: '1.6em',
       fontWeight: 700,

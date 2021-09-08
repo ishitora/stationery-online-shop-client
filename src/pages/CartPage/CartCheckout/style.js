@@ -5,13 +5,9 @@ const useStyles = makeStyles((theme) => {
       fontSize: '1.5rem',
       alignSelf: 'flex-start',
       display: 'flex',
-      padding: '1em',
-      paddingTop: 0,
       flexFlow: 'column nowrap',
-      border: '1px solid #888',
-      borderRadius: '0.4em',
-      '& >h2': {
-        alignSelf: 'center',
+      '&>h2': {
+        backgroundColor: theme.palette.primary.light,
       },
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         display: 'none',

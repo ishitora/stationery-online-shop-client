@@ -14,7 +14,6 @@ const useStyles = makeStyles((theme) => {
       transition: 'all 1s',
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
-        color: theme.palette.primary.dark,
       },
       '&:disabled': {
         backgroundColor: '#DDD',

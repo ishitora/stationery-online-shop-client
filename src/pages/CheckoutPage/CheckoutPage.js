@@ -34,11 +34,12 @@ function CheckoutPage(props) {
     address: '',
     postCode: '',
   });
-  const [checkoutSuccess, setCheckoutSuccess, history] = useState(false);
-
+  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
   const classes = useStyles();
+  const { isLogin, history, clearCart } = props;
+
   useEffect(() => {
-    if (props.isLogin) {
+    if (isLogin) {
       const reqCart = async () => {
         const [list, , price] = await getCartProductList();
         setPoductList(list);
@@ -67,7 +68,7 @@ function CheckoutPage(props) {
     console.log('訂單:', state);
     try {
       await customAxios.post('/order', state);
-      props.clearCart();
+      clearCart();
       setCheckoutSuccess(true);
     } catch (e) {
       console.error(e);

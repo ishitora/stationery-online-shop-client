@@ -1,6 +1,9 @@
 import React from 'react';
 import Input from '../../../components/Input/Input';
 import useStyles from './style';
+
+import TitleBox from '../../../components/TitleBox/TitleBox';
+
 import {
   nameValidation,
   addressValidation,
@@ -19,8 +22,7 @@ function CheckoutInformation(props) {
   } = props;
   const classes = useStyles();
   return (
-    <div>
-      <h2 className={classes.title}>收件人資料</h2>
+    <TitleBox className={classes.root} title='收件人資料'>
       <Input
         id='postCode'
         label='郵遞區號'
@@ -69,7 +71,7 @@ function CheckoutInformation(props) {
         hasError={hasError}
         sethasError={sethasError}
       />
-    </div>
+    </TitleBox>
   );
 }
 

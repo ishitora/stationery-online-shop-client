@@ -1,11 +1,10 @@
-import React from 'react';
+import TitleBox from '../../../components/TitleBox/TitleBox';
 import useStyles from './style';
 function CheckoutPaymentMethod(props) {
   const { handleChange } = props.handleChange;
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <h2>請選擇付款方式:</h2>
+    <TitleBox className={classes.root} title='請選擇付款方式:'>
       <div>
         <input
           type='radio'
@@ -29,7 +28,7 @@ function CheckoutPaymentMethod(props) {
           信用卡付款
         </label>
       </div>
-    </div>
+    </TitleBox>
   );
 }
 

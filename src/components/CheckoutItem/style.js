@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => {
         flex: '60%',
         '&>h3': {
           fontSize: '1.2em',
-          fontWeight: 700,
           color: theme.palette.secondary.dark,
         },
       },

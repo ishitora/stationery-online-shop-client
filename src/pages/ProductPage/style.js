@@ -4,7 +4,6 @@ const useStyles = makeStyles((theme) => {
   console.log(theme);
   return {
     root: {
-      padding: '2em 4vw',
       display: 'flex',
       flexFlow: 'column nowrap',
       alignItems: 'center',

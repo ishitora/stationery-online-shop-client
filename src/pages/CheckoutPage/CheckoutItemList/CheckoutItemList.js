@@ -1,11 +1,11 @@
 import React from 'react';
 import CheckoutItem from '../../../components/CheckoutItem/CheckoutItem';
+import TitleBox from '../../../components/TitleBox/TitleBox';
 import useStyles from './style';
 function CheckoutItemList(props) {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <h2 className={classes.title}>購買清單</h2>
+    <TitleBox title='購買清單' className={classes.root}>
       <div>
         {props.productList.map((item) => (
           <CheckoutItem key={item.numberId} {...item} />
@@ -15,7 +15,7 @@ function CheckoutItemList(props) {
         <span>總價:</span>
         <span>NT${props.totalPrice}</span>
       </div>
-    </div>
+    </TitleBox>
   );
 }
 
