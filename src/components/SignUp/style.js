@@ -22,6 +22,14 @@ const useStyles = makeStyles((theme) => {
         },
       },
     },
+    buttonProgress: {
+      color: theme.palette.primary.main,
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      marginTop: -6,
+      marginLeft: -6,
+    },
   };
 });
 export default useStyles;

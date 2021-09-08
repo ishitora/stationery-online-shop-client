@@ -10,19 +10,11 @@ import {
 
 //註冊
 
-export const userSignUp = (signUpData) => async (dispatch) => {
-  console.log('res=', signUpData);
-
-  try {
-    const res = await customAxios.post(`/user/signUp`, signUpData);
-    console.log('res=', res.data);
-    customAxios.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${res.data.token}`;
-    dispatch({ type: USER_SIGN_UP, payload: res.data });
-  } catch (e) {
-    console.error(e);
-  }
+export const userSignUp = (signUpData) => {
+  customAxios.defaults.headers.common[
+    'Authorization'
+  ] = `Bearer ${signUpData.token}`;
+  return { type: USER_SIGN_UP, payload: signUpData };
 };
 
 //登入

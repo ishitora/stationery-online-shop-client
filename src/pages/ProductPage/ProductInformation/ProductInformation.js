@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import ProductSnackbar from '../ProductSnackbar/ProductSnackbar';
 
@@ -11,8 +12,15 @@ import useStyles from './style';
 function ProductInformation(props) {
   const history = useHistory();
   const classes = useStyles();
-  const { product, addProductToCart, open, setOpen, quantity, setQuantity } =
-    props;
+  const {
+    product,
+    addProductToCart,
+    open,
+    setOpen,
+    quantity,
+    setQuantity,
+    isAddingCart,
+  } = props;
   return (
     <div className={classes.root}>
       <h2 className={classes.title}>{product.name}</h2>
@@ -41,7 +49,12 @@ function ProductInformation(props) {
       <p className={classes.details}>{product.details}</p>
       {product.stockQuantity !== 0 ? (
         <div style={{ display: 'flex' }}>
-          <SimpleButton onClick={addProductToCart}>加入購物車</SimpleButton>{' '}
+          <SimpleButton disabled={isAddingCart} onClick={addProductToCart}>
+            加入購物車
+            {isAddingCart ? (
+              <CircularProgress size={24} className={classes.buttonProgress} />
+            ) : null}
+          </SimpleButton>
           <Counter
             value={quantity}
             setValue={setQuantity}

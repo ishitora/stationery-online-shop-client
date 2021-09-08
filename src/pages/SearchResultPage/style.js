@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       flexFlow: 'column nowrap',
       alignItems: 'center',
+      height: '100%',
     },
   };
 });

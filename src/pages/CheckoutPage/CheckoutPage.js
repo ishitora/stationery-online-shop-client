@@ -1,6 +1,7 @@
 //結帳頁面
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 import CheckoutSuccess from './CheckoutSuccess/CheckoutSuccess';
 import CheckoutItemList from './CheckoutItemList/CheckoutItemList';
@@ -35,6 +36,8 @@ function CheckoutPage(props) {
     postCode: '',
   });
   const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+  const [isCreating, setIsCreating] = useState(false);
+
   const classes = useStyles();
   const { isLogin, history, clearCart } = props;
 
@@ -52,12 +55,6 @@ function CheckoutPage(props) {
     }
   }, []);
 
-  useEffect(() => {
-    return () => {
-      setCheckoutSuccess(false);
-    };
-  }, []);
-
   const handleChange = (event) => {
     setState({
       [event.target.name]: event.target.value,
@@ -67,11 +64,14 @@ function CheckoutPage(props) {
   const createOrder = async () => {
     console.log('訂單:', state);
     try {
+      setIsCreating(true);
       await customAxios.post('/order', state);
       clearCart();
+      setIsCreating(false);
       setCheckoutSuccess(true);
     } catch (e) {
       console.error(e);
+      setIsCreating(false);
     }
   };
 
@@ -86,9 +86,15 @@ function CheckoutPage(props) {
         {...state}
       />
       <SimpleButton
-        disabled={!Object.values(hasError).every((error) => error === false)}
+        disabled={
+          !Object.values(hasError).every((error) => error === false) ||
+          isCreating
+        }
         onClick={createOrder}>
         確認無誤 建立訂單
+        {isCreating ? (
+            <CircularProgress size={24} className={classes.buttonProgress} />
+          ) : null}
       </SimpleButton>
       {checkoutSuccess ? (
         <Modal>

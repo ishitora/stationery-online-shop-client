@@ -3,6 +3,7 @@ const useStyles = makeStyles((theme) => {
   console.log(theme);
   return {
     list: {
+      flex: 1,
       maxWidth: '1300px',
       padding: '1em 3vw',
       display: 'flex',

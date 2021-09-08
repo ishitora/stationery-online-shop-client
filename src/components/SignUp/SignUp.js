@@ -2,10 +2,15 @@
 import { connect } from 'react-redux';
 import LinkButton from '../LinkButton/LinkButton';
 import SimpleButton from '../SimpleButton/SimpleButton';
+import { useState } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import customAxios from '../../utils/customAxios';
 import Input from '../Input/Input';
 import useSetState from '../../hooks/useSetState';
 import { userSignUp } from '../../actions/';
 import useStyles from './style';
+
 import {
   nameValidation,
   emailValidation,
@@ -21,6 +26,7 @@ const initialState = {
 function SignUp(props) {
   const [state, setState] = useSetState(initialState);
   const [hasError, sethasError] = useSetState(initialState);
+  const [isRegistering, setIsRegistering] = useState(false);
   const classes = useStyles();
   const handleChange = (e) => {
     setState({
@@ -30,7 +36,16 @@ function SignUp(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    props.signUp(state);
+    try {
+      setIsRegistering(true);
+      const res = await customAxios.post(`/user/signUp`, state);
+      console.log('res=', res.data);
+      props.signUp(res.data);
+      setIsRegistering(false);
+    } catch (e) {
+      console.error(e);
+      setIsRegistering(false);
+    }
   };
   return (
     <div className={classes.root}>
@@ -76,8 +91,14 @@ function SignUp(props) {
 
         <SimpleButton
           type='submit'
-          disabled={!Object.values(hasError).every((error) => error === false)}>
+          disabled={
+            !Object.values(hasError).every((error) => error === false) ||
+            isRegistering
+          }>
           註冊
+          {isRegistering ? (
+            <CircularProgress size={12} className={classes.buttonProgress} />
+          ) : null}
         </SimpleButton>
       </form>
       <span>

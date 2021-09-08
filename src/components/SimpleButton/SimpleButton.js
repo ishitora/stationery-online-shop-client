@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => {
       color: '#EEE',
       cursor: 'pointer',
       borderRadius: '0.3em',
-      transition: 'all 1s',
+      transitionProperty: 'color,background-color',
+      transitionDuration: '1s',
+      position: 'relative',
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
       },

@@ -18,9 +18,10 @@ function ProductPage(props) {
 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [isAddingCart, setIsAddingCart] = useState(false);
 
   const classes = useStyles();
-
+  const { isLogin, refreshCart } = props;
   useEffect(() => {
     window.scrollTo(0, 0);
     const reqProduct = async (param) => {
@@ -37,15 +38,18 @@ function ProductPage(props) {
   }, [props.match.params.id]);
 
   const addProductToCart = async () => {
-    if (props.isLogin) {
+    if (isLogin) {
       const p = { productId: product.numberId, quantity: quantity };
+      setIsAddingCart(true);
       try {
         const res = await customAxios.post(`/account/cart`, p);
         console.log('res=', res.data);
-        props.refreshCart(res.data);
+        refreshCart(res.data);
         setOpen(true);
+        setIsAddingCart(false);
       } catch (e) {
         console.error(e);
+        setIsAddingCart(false);
       }
     } else {
       setOpen(true);
@@ -65,7 +69,8 @@ function ProductPage(props) {
             setOpen={setOpen}
             quantity={quantity}
             setQuantity={setQuantity}
-            isLogin={props.isLogin}
+            isLogin={isLogin}
+            isAddingCart={isAddingCart}
           />
         </div>
       </div>

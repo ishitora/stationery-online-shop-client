@@ -12,6 +12,7 @@ import useStyles from './style';
 function SearchResultPage(props) {
   const [productList, setProductList] = useState([]);
   const [resultCount, setResultCount] = useState('');
+
   const classes = useStyles();
   const limit = 12;
   const page = qs.parse(props.location.search.slice(1)).page || 1;

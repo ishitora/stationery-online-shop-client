@@ -1,12 +1,17 @@
 //登入
 import { useState } from 'react';
 import { connect } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 import Input from '../Input/Input';
 import LinkButton from '../LinkButton/LinkButton';
 import SimpleButton from '../SimpleButton/SimpleButton';
+
 import useSetState from '../../hooks/useSetState';
 import customAxios from '../../utils/customAxios';
+
 import { userSignIn } from '../../actions/';
+
 import useStyles from './style';
 
 function SignIn(props) {
@@ -17,6 +22,7 @@ function SignIn(props) {
 
   const [state, setState] = useSetState(initialState);
   const [errorMessage, setMessage] = useState('');
+  const [isLogining, setIsLogining] = useState(false);
   const classes = useStyles(errorMessage);
 
   const handleChange = (event) => {
@@ -29,12 +35,13 @@ function SignIn(props) {
     event.preventDefault();
 
     try {
+      setIsLogining(true);
       const res = await customAxios.post(`/user/signIn`, state);
       console.log('res=', res.data);
       customAxios.defaults.headers.common[
         'Authorization'
       ] = `Bearer ${res.data.token}`;
-
+      setIsLogining(false);
       props.signIn(res.data);
     } catch (e) {
       if (e.response) {
@@ -42,6 +49,7 @@ function SignIn(props) {
       } else {
         setMessage('伺服器沒有回應');
       }
+      setIsLogining(false);
     }
   };
   return (
@@ -67,7 +75,12 @@ function SignIn(props) {
           onChange={handleChange}
           placeholder='請輸入密碼'
         />
-        <SimpleButton type='submit'>登入</SimpleButton>
+        <SimpleButton disabled={isLogining} type='submit'>
+          登入
+          {isLogining ? (
+            <CircularProgress size={12} className={classes.buttonProgress} />
+          ) : null}
+        </SimpleButton>
       </form>
       <p>{errorMessage}</p>
       <span>

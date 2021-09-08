@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme) => {
       maxWidth: '1280px',
       display: 'flex',
       flexFlow: 'column nowrap',
+      alignItems: 'center',
       [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
         flexFlow: 'row nowrap',
+        alignItems: 'stretch',
         justifyContent: 'space-around',
       },
     },
