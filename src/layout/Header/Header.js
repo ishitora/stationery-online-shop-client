@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
-
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-
 import Drawer from '@material-ui/core/Drawer';
 
 import SearchBar from './SearchBar/SearchBar';
+import CartButton from './CartButton/CartButton';
+import DehazeButton from './DehazeButton/DehazeButton';
 
 import logo from '../../assets/logo.png';
 import Modal from '../../components/Modal/Modal';
@@ -13,8 +13,9 @@ import PopUpWindow from '../../components/PopUpWindow/PopUpWindow';
 
 import SimpleButton from '../../components/SimpleButton/SimpleButton';
 import LinkButton from '../../components/LinkButton/LinkButton';
-import CartButton from './CartButton/CartButton';
-import DehazeButton from './DehazeButton/DehazeButton';
+
+import notRenderInCheckout from '../../utils/notRenderInCheckout';
+
 import { userSignOut } from '../../actions';
 
 import CategoryMenuPhone from '../CategoryMenuPhone/CategoryMenuPhone';
@@ -44,7 +45,11 @@ function Header(props) {
         </Modal>
       ) : null}
 
-      <Drawer variant='persistent' anchor='left' open={open}>
+      <Drawer
+        className={classes.hideWhenSmUp}
+        variant='persistent'
+        anchor='left'
+        open={open}>
         <CategoryMenuPhone />
       </Drawer>
       <SearchBar />
@@ -66,11 +71,17 @@ function Header(props) {
           註冊/登入
         </SimpleButton>
       )}
-      <div>
+      <div className={classes.iconGroup}>
         <Link to='/cart'>
           <CartButton />
         </Link>
-        <DehazeButton open={open} setOpen={setOpen} />
+        {notRenderInCheckout(
+          <DehazeButton
+            className={classes.hideWhenSmUp}
+            open={open}
+            setOpen={setOpen}
+          />
+        )}
       </div>
     </div>
   );

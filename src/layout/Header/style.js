@@ -32,6 +32,14 @@ const useStyles = makeStyles((theme) => {
         color: theme.palette.logoColor.dark,
       },
     },
+    iconGroup: {
+      marginRight: '0.8em',
+    },
+    hideWhenSmUp: {
+      [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+        display: 'none',
+      },
+    },
   };
 });
 

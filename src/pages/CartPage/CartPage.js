@@ -6,7 +6,6 @@ import CartList from './CartList/CartList';
 import CartCheckout from './CartCheckout/CartCheckout';
 import CartCheckoutPhone from './CartCheckoutPhone/CartCheckoutPhone';
 
-import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 import getCartProductList from '../../utils/getCartProductList';
 import { clearCart } from '../../actions/';
 import useStyles from './style';
@@ -17,9 +16,10 @@ function CartPage(props) {
   const [totalPrice, setTotalPrice] = useState(0);
 
   const classes = useStyles();
-  const { cart, isLogin } = props;
+  const { cart, isLogin, history } = props;
 
   useEffect(() => {
+    console.log(props);
     if (isLogin) {
       const reqCart = async () => {
         const [list, quantity, price] = await getCartProductList();
@@ -28,12 +28,10 @@ function CartPage(props) {
         setTotalPrice(price);
       };
       reqCart();
+    } else {
+      history.push('/notLogin');
     }
   }, [cart]);
-
-  if (!isLogin) {
-    return <NotLoginPage />;
-  }
 
   return (
     <div className={classes.root}>

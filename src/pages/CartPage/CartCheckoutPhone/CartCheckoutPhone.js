@@ -1,7 +1,8 @@
-import React from 'react';
+import { useHistory } from 'react-router';
 import SimpleButton from '../../../components/SimpleButton/SimpleButton';
 import useStyles from './style';
 function CartCheckoutPhone(props) {
+  const history = useHistory();
   const classes = useStyles();
   const { totalPrice } = props;
   return (

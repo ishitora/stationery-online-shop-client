@@ -7,8 +7,8 @@ import CheckoutItemList from './CheckoutItemList/CheckoutItemList';
 import CheckoutPaymentMethod from './CheckoutPaymentMethod/CheckoutPaymentMethod';
 import CheckoutInformation from './CheckoutInformation/CheckoutInformation';
 
+import Modal from '../../components/Modal/Modal';
 import SimpleButton from '../../components/SimpleButton/SimpleButton';
-import NotLoginPage from '../../pages/NotLoginPage/NotLoginPage';
 
 import useSetState from '../../hooks/useSetState';
 import customAxios from '../../utils/customAxios';
@@ -34,7 +34,7 @@ function CheckoutPage(props) {
     address: '',
     postCode: '',
   });
-  const [checkoutSuccess, setCheckoutSuccess] = useState(false);
+  const [checkoutSuccess, setCheckoutSuccess, history] = useState(false);
 
   const classes = useStyles();
   useEffect(() => {
@@ -46,7 +46,15 @@ function CheckoutPage(props) {
       };
 
       reqCart();
+    } else {
+      history.push('/notLogin');
     }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      setCheckoutSuccess(false);
+    };
   }, []);
 
   const handleChange = (event) => {
@@ -66,19 +74,10 @@ function CheckoutPage(props) {
     }
   };
 
-  if (!props.isLogin) {
-    return <NotLoginPage />;
-  }
-
-  if (checkoutSuccess) {
-    return <CheckoutSuccess />;
-  }
-
   return (
     <div className={classes.root}>
       <CheckoutItemList productList={productList} totalPrice={totalPrice} />
       <CheckoutPaymentMethod handleChange={handleChange} />
-
       <CheckoutInformation
         hasError={hasError}
         sethasError={sethasError}
@@ -90,6 +89,11 @@ function CheckoutPage(props) {
         onClick={createOrder}>
         確認無誤 建立訂單
       </SimpleButton>
+      {checkoutSuccess ? (
+        <Modal>
+          <CheckoutSuccess />
+        </Modal>
+      ) : null}
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import { Route } from 'react-router-dom';
 
 function notRenderInCheckout(component) {
-  return <Route path={/^(?!.*checkout).*$/} component={component} />;
+  return <Route path={/^(?!.*checkout).*$/}>{component}</Route>;
 }
 
 export default notRenderInCheckout;

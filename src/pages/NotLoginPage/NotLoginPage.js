@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-useHistory;
 function NotLoginPage() {
   const history = useHistory();
   useEffect(() => {
