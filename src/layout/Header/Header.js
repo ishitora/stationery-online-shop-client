@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Drawer from '@material-ui/core/Drawer';
+import Drawer from '../Drawer/Drawer';
 
 import SearchBar from './SearchBar/SearchBar';
 import CartButton from './CartButton/CartButton';
@@ -18,7 +18,6 @@ import notRenderInCheckout from '../../utils/notRenderInCheckout';
 
 import { userSignOut } from '../../actions';
 
-import CategoryMenuPhone from '../CategoryMenuPhone/CategoryMenuPhone';
 import useStyles from './style';
 
 function Header(props) {
@@ -49,9 +48,8 @@ function Header(props) {
         className={classes.hideWhenSmUp}
         variant='persistent'
         anchor='left'
-        open={open}>
-        <CategoryMenuPhone />
-      </Drawer>
+        open={open}
+        setOpen={setOpen}></Drawer>
       <SearchBar />
 
       {props.isLogin ? (

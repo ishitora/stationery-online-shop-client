@@ -6,7 +6,7 @@ import TreeItem from '@material-ui/lab/TreeItem';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import category from '../../config/category';
-import LinkButton from '../../components/LinkButton/LinkButton';
+
 import useStyles from './style';
 
 function CategoryMenuPhone() {
@@ -16,17 +16,11 @@ function CategoryMenuPhone() {
     <TreeItem
       key={nodes.link}
       nodeId={nodes.link}
-      label={
-        <div className={classes.category}>
-          <LinkButton
-            onClick={(e) => {
-              e.preventDefault();
-              handleClick(nodes.link);
-            }}>
-            {nodes.name}
-          </LinkButton>
-        </div>
-      }>
+      className={classes.content}
+      onLabelClick={() => {
+        handleClick(nodes.link);
+      }}
+      label={<div className={classes.category}>{nodes.name}</div>}>
       {Array.isArray(nodes.child)
         ? nodes.child.map((node) => renderTree(node))
         : null}
@@ -39,6 +33,7 @@ function CategoryMenuPhone() {
   return (
     <div className={classes.root}>
       <TreeView
+        className={classes.root}
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}
         multiSelect>

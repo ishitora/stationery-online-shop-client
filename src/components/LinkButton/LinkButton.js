@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => {
       backgroundColor: 'transparent',
       border: 'none',
       outline: 'none',
-      color: theme.palette.logoColor.dark,
+      color: theme.palette.primary.dark,
       cursor: 'pointer',
       '&:hover': {
         color: theme.palette.secondary.main,

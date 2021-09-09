@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => {
     root: {
       fontSize: '1rem',
       color: '#DDD',
-      backgroundColor: theme.palette.logoColor.dark,
+      backgroundColor: theme.palette.primary.dark,
 
       display: 'flex',
       justifyContent: 'center',

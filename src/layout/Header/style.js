@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      backgroundColor: theme.palette.logoColor.main,
+      backgroundColor: theme.palette.primary.main,
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         alignContent: 'space-around',
         flexFlow: 'row wrap',
@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme) => {
       backgroundPosition: 'center',
     },
     login: {
-      backgroundColor: theme.palette.logoColor.dark,
+      backgroundColor: theme.palette.primary.dark,
       borderRadius: '100px',
       padding: '0.5em 0.8em',
       fontSize: 'calc(0.6rem + 5px)',
       '&:hover': {
-        backgroundColor: theme.palette.logoColor.light,
-        color: theme.palette.logoColor.dark,
+        backgroundColor: theme.palette.primary.light,
+        color: theme.palette.primary.dark,
       },
     },
     iconGroup: {
