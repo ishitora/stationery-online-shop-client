@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => {
         backgroundColor: theme.palette.primary.light,
         width: '1.5em',
         '&:disabled': {
-          backgroundColor: '#EEE',
+          backgroundColor: '#DDD',
         },
       },
     },

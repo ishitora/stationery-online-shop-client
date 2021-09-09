@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Drawer from '../Drawer/Drawer';
+import Avatar from '@material-ui/core/Avatar';
+import PersonIcon from '@material-ui/icons/Person';
 
+import Drawer from '../Drawer/Drawer';
 import SearchBar from './SearchBar/SearchBar';
 import CartButton from './CartButton/CartButton';
 import DehazeButton from './DehazeButton/DehazeButton';
@@ -33,6 +35,8 @@ function Header(props) {
     setOpen(false);
   }, [location.pathname, location.search]);
 
+  const { isLogin } = props;
+
   return (
     <div className={classes.root}>
       <Link to='/'>
@@ -52,7 +56,7 @@ function Header(props) {
         setOpen={setOpen}></Drawer>
       <SearchBar />
 
-      {props.isLogin ? (
+      {isLogin ? (
         <LinkButton
           onClick={() => {
             history.push('/');
@@ -70,6 +74,11 @@ function Header(props) {
         </SimpleButton>
       )}
       <div className={classes.iconGroup}>
+        {isLogin ? (
+          <Avatar className={classes.avatar}>
+            <PersonIcon />
+          </Avatar>
+        ) : null}
         <Link to='/cart'>
           <CartButton />
         </Link>

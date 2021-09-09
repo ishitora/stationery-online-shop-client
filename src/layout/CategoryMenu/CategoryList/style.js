@@ -6,7 +6,8 @@ const useStyles = makeStyles(() => {
       top: '100%',
       zIndex: '10',
       width: '100%',
-      maxWidth: '200px',
+      maxWidth: '300px',
+      padding: '0 1em',
       backgroundColor: '#FFF',
       borderRadius: '0 0 5px 5px ',
       '&>ul': {

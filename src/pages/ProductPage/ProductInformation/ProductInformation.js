@@ -36,12 +36,12 @@ function ProductInformation(props) {
       <p>
         價格:
         {product.price === product.priceDiscount ? (
-          <span>{product.price}</span>
+          <span>NT${product.price}</span>
         ) : (
           <>
-            <span className={classes.price}>{product.price}</span>{' '}
+            <span className={classes.price}>NT${product.price}</span>{' '}
             <span className={classes.priceDiscount}>
-              {product.priceDiscount}
+              NT${product.priceDiscount}
             </span>
           </>
         )}

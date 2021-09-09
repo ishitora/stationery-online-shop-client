@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => {
-
   return {
     root: {
       display: 'flex',
@@ -9,6 +8,7 @@ const useStyles = makeStyles(() => {
     },
     main: {
       flex: 1,
+      backgroundColor: '#efebe9',
       '&>div': {
         padding: '1.5em  0',
       },

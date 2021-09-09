@@ -33,11 +33,19 @@ const useStyles = makeStyles((theme) => {
       },
     },
     iconGroup: {
+      display: 'flex',
       marginRight: '0.8em',
+      alignItems: 'center',
     },
     hideWhenSmUp: {
       [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
         display: 'none',
+      },
+    },
+    avatar: {
+      backgroundColor: theme.palette.primary.dark,
+      '&:hover': {
+        cursor: 'pointer',
       },
     },
   };

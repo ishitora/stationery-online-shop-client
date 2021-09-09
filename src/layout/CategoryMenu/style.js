@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => {
       '&:hover': {
         '&>ul': {
           maxHeight: '500px',
-          transition: ' max-height 0.5s',
         },
       },
     },
