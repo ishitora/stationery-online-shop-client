@@ -25,7 +25,7 @@ function CheckoutPaymentMethod(props) {
           disabled
         />
         <label htmlFor='creditCard' disabled>
-          信用卡付款
+          信用卡付款(準備中)
         </label>
       </div>
     </TitleBox>

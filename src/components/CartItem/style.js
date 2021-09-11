@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => {
 
       '&>input': {
         width: '20%',
+        fontSize: '16px',
       },
       '&>button': {
         fontSize: '1em',

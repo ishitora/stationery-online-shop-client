@@ -15,8 +15,8 @@ const useStyles = makeStyles((theme) => {
     },
     input: {
       border: 'none',
-      fontSize: '12px',
-      padding: '0.5rem 1rem',
+      fontSize: '16px', //在手機 輸入框字體小於16px時螢幕會自動縮放
+      padding: '0.4em 0.8em',
       width: '85%',
       transition: 'all 0.2s',
       borderRadius: '0.3em',

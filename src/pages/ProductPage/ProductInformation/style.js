@@ -2,31 +2,35 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      fontSize: '2rem',
+      fontSize: '1.5rem',
       display: 'flex',
       flexFlow: 'column nowrap',
       fontWeight: 700,
       '&> * + *': {
-        marginTop: '0.6em',
+        marginTop: '0.5em',
       },
     },
-
+    title: {
+      fontSize: '2rem',
+      color: theme.palette.secondary.main,
+    },
     brand: {
       alignSelf: 'flex-start',
       padding: 0,
-      fontSize: '1em',
-    },
-    title: {
-      fontSize: '1em',
-      color: theme.palette.secondary.main,
+      fontSize: '1.5rem',
     },
     price: {
+      fontSize: '1.4rem',
+    },
+    beforeDiscount: {
       color: `#888`,
       textDecoration: 'line-through',
     },
-    priceDiscount: { color: '#c62828' },
+    afterDiscount: {
+      color: '#c62828',
+    },
     details: {
-      fontSize: '0.7em',
+      fontSize: '1.3rem',
       fontWeight: 400,
     },
     buttonProgress: {
