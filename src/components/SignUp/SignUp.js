@@ -48,7 +48,6 @@ function SignUp(props) {
   };
   return (
     <div className={classes.root}>
-      <h2>註冊帳號</h2>
       <form onSubmit={handleSubmit}>
         <Input
           id='signUpEmail'

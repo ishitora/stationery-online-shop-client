@@ -39,9 +39,19 @@ function Header(props) {
 
   return (
     <div className={classes.root}>
-      <Link to='/'>
-        <img className={classes.logo} src={logo} alt='LOGO' />
-      </Link>
+      <div className={classes.leftGroup}>
+        {notRenderInCheckout(
+          <DehazeButton
+            className={classes.hideWhenSmUp}
+            open={open}
+            setOpen={setOpen}
+          />
+        )}
+        <Link to='/'>
+          <img className={classes.logo} src={logo} alt='LOGO' />
+        </Link>
+      </div>
+
       {showModal ? (
         <Modal>
           <PopUpWindow showModal={showModal} setShowModal={setShowModal} />
@@ -73,7 +83,7 @@ function Header(props) {
           註冊/登入
         </SimpleButton>
       )}
-      <div className={classes.iconGroup}>
+      <div className={classes.rightGroup}>
         {isLogin ? (
           <Avatar className={classes.avatar}>
             <PersonIcon />
@@ -82,13 +92,6 @@ function Header(props) {
         <Link to='/cart'>
           <CartButton />
         </Link>
-        {notRenderInCheckout(
-          <DehazeButton
-            className={classes.hideWhenSmUp}
-            open={open}
-            setOpen={setOpen}
-          />
-        )}
       </div>
     </div>
   );

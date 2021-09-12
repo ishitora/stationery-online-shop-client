@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => {
         height: '80px',
       },
     },
-    logo: { height: 'calc(1.5rem + 10px)', marginLeft: '1em' },
+    logo: { height: 'calc(1.5rem + 10px)' },
     item: {
       margin: '0 auto',
       width: '100%',
@@ -24,17 +24,22 @@ const useStyles = makeStyles((theme) => {
     },
     login: {
       backgroundColor: theme.palette.primary.dark,
-      borderRadius: '100px',
-      padding: '0.5em 0.8em',
-      fontSize: 'calc(0.6rem + 5px)',
+      borderRadius: '10px',
+      padding: '0.4em 0.8em',
+      fontSize: 'calc(0.6rem + 4px)',
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
         color: theme.palette.primary.dark,
       },
     },
-    iconGroup: {
+    leftGroup: {
       display: 'flex',
-      marginRight: '0.8em',
+      alignItems: 'center',
+      marginLeft: '0.5rem',
+    },
+    rightGroup: {
+      display: 'flex',
+      marginRight: '0.8rem',
       alignItems: 'center',
     },
     hideWhenSmUp: {
@@ -44,6 +49,8 @@ const useStyles = makeStyles((theme) => {
     },
     avatar: {
       backgroundColor: theme.palette.primary.dark,
+      width: '2rem',
+      height: '2rem',
       '&:hover': {
         cursor: 'pointer',
       },

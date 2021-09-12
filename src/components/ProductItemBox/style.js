@@ -29,13 +29,17 @@ const useStyles = makeStyles((theme) => {
     img: {
       position: 'relative',
       minWidth: '120px',
+      minHeight: '120px',
       width: '40vw',
       height: '40vw',
-      minHeight: '120px',
+      backgroundColor: '#FFF',
       backgroundImage: (props) => `url(${props.product.smallImage})`,
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
+
+      border: `1px solid #DDD`,
+      borderRadius: '5px',
       '&:hover': {
         filter: 'opacity(60%)',
       },

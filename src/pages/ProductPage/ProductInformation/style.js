@@ -2,12 +2,18 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => {
   return {
     root: {
+      width: '90vw',
+      maxWidth: '400px',
       fontSize: '1.5rem',
       display: 'flex',
       flexFlow: 'column nowrap',
       fontWeight: 700,
       '&> * + *': {
         marginTop: '0.5em',
+      },
+      [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+        width: 'auto',
+        maxWidth: 'auto',
       },
     },
     title: {

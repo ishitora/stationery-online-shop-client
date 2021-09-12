@@ -5,13 +5,11 @@ const useStyles = makeStyles((theme) => {
       display: 'flex',
       flexFlow: 'column nowrap',
       alignItems: 'center',
+      marginTop: '50px',
       '&>* + *': {
         marginTop: '1.5em',
       },
-      '&>h2': {
-        fontSize: '25px',
-        fontWeight: 700,
-      },
+
       '&>form': {
         display: 'flex',
         flexFlow: 'column nowrap',

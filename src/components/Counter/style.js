@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     number: {
-      color: theme.palette.primary.main,
+      color: theme.palette.primary.dark,
       padding: '0.3em 0.5em',
       borderStyle: 'solid none',
       borderWidth: '1px',

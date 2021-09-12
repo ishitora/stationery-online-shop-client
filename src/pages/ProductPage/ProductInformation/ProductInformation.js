@@ -7,6 +7,7 @@ import ProductSnackbar from '../ProductSnackbar/ProductSnackbar';
 import Counter from '../../../components/Counter/Counter';
 import LinkButton from '../../../components/LinkButton/LinkButton';
 import SimpleButton from '../../../components/SimpleButton/SimpleButton';
+
 import useStyles from './style';
 
 function ProductInformation(props) {

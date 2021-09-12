@@ -53,7 +53,6 @@ function SignIn(props) {
   };
   return (
     <div className={classes.root}>
-      <h2>使用者登入</h2>
       <form onSubmit={handleSubmit}>
         <Input
           id='signInEmail'

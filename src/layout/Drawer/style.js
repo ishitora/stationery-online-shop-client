@@ -4,6 +4,10 @@ const useStyles = makeStyles((theme) => {
   return {
     root: {
       '&>div': { backgroundColor: '#EEE' },
+      display: 'flex',
+      flexFlow: 'column nowrap',
+      overflow: 'auto',
+      height: 'auto',
     },
   };
 });
