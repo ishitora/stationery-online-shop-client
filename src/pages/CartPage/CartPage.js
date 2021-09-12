@@ -30,7 +30,7 @@ function CartPage(props) {
     } else {
       history.push('/notLogin');
     }
-  }, [cart]);
+  }, [cart, isLogin, history]);
 
   return (
     <div className={classes.root}>

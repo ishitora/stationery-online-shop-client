@@ -24,7 +24,7 @@ function ResSlider(props) {
       }
     };
     fetchProduct();
-  }, [id]);
+  }, [count, id]);
 
   return (
     <div className={classes.root}>

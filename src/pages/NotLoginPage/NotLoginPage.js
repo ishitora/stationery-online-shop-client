@@ -10,7 +10,7 @@ function NotLoginPage() {
     return () => {
       clearTimeout(timer);
     };
-  }, []);
+  }, [history]);
 
   return <div>你還沒有登入 無法進行此操作 5秒後跳轉回首頁</div>;
 }

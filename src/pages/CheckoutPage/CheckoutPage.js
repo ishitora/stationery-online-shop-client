@@ -53,7 +53,7 @@ function CheckoutPage(props) {
     } else {
       history.push('/notLogin');
     }
-  }, []);
+  }, [history, isLogin]);
 
   const handleChange = (event) => {
     setState({
@@ -92,8 +92,8 @@ function CheckoutPage(props) {
         onClick={createOrder}>
         確認無誤 建立訂單
         {isCreating ? (
-            <CircularProgress size={24} className={classes.buttonProgress} />
-          ) : null}
+          <CircularProgress size={24} className={classes.buttonProgress} />
+        ) : null}
       </SimpleButton>
       {checkoutSuccess ? (
         <Modal>

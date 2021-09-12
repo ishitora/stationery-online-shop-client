@@ -1,5 +1,5 @@
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { useState, useEffect, useRef } from 'react';
 
 import WindowTitle from '../WindowTitle/WindowTitle';
 import SignIn from '../SignIn/SignIn';
@@ -14,9 +14,9 @@ function PopUpWindow(props) {
   const firstRender = useRef(true);
   //是否初次render
 
-  const changeModal = () => {
+  const changeModal = useCallback(() => {
     props.setShowModal(!props.showModal);
-  };
+  }, [props]);
 
   useEffect(() => {
     if (firstRender.current) {
@@ -24,7 +24,7 @@ function PopUpWindow(props) {
     } else {
       changeModal();
     }
-  }, [props.isLogin]);
+  }, [changeModal, props.isLogin]);
   //登入或註冊成功後，會關閉互動視窗  初次render時不作用
 
   return (
