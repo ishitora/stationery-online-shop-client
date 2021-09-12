@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export default axios.create({
-  baseURL: 'http://localhost:5000',
-  //baseURL: 'https://stationery-online-shop-server.herokuapp.com/',
+  baseURL:
+    process.env.NODE_ENV === 'production'
+      ? 'https://stationery-online-shop-server.herokuapp.com/'
+      : 'http://localhost:5000',
 });
