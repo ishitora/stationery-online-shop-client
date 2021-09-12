@@ -82,7 +82,7 @@ function SignUp(props) {
           value={state.password}
           onChange={handleChange}
           validation={passwordValidation}
-          placeholder='請輸入密碼'
+          placeholder='請輸入8~16位密碼'
           hasError={hasError}
           sethasError={sethasError}
         />
