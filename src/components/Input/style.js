@@ -49,14 +49,14 @@ const useStyles = makeStyles((theme) => {
       right: '0',
       transform: 'translate(-50%,-50%)',
     },
-    errorMessage: {
+    noDisplay: {
       color: theme.palette.error.main,
-      opacity: (props) => {
-        if (!props.hasError) {
-          return 0;
-        }
-        return props.hasError[props.name] ? 1 : 0;
-      },
+      opacity: 0,
+      transition: 'opacity 1s',
+    },
+
+    display: {
+      opacity: 1,
       transition: 'opacity 1s',
     },
   };

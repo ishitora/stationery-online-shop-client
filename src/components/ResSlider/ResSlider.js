@@ -11,10 +11,11 @@ import useStyles from './style';
 
 function ResSlider(props) {
   const { count, title } = props;
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState([{}, {}, {}, {}]);
   const { id } = useParams();
   const classes = useStyles();
   useEffect(() => {
+    setProductList([{}, {}, {}, {}]);
     const fetchProduct = async () => {
       try {
         const res = await customAxios.get(`/product/random/${count}`);

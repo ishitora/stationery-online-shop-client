@@ -2,6 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => {
   return {
+    '@keyframes backgroundLoading': {
+      '0%': {
+        background: 'linear-gradient(45deg, white, black)',
+      },
+      '50%': { background: 'linear-gradient(45deg,black,white)' },
+      '100%': {
+        background: 'linear-gradient(45deg, white, black)',
+      },
+    },
     root: {
       display: 'flex',
       flexFlow: 'column nowrap',
@@ -32,7 +41,7 @@ const useStyles = makeStyles((theme) => {
       minHeight: '120px',
       width: '40vw',
       height: '40vw',
-      backgroundColor: '#FFF',
+      backgroundColor: (props) => (props.product.numberId ? '#FFF' : '#CCC'),
       backgroundImage: (props) => `url(${props.product.smallImage})`,
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
@@ -63,7 +72,7 @@ const useStyles = makeStyles((theme) => {
       transform: 'translateY(-50%)',
       top: '50%',
       display: (props) =>
-        props.product
+        props.product.numberId
           ? props.product.status === '可購買'
             ? 'none'
             : 'block'

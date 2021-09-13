@@ -20,7 +20,9 @@ function ProductItemBox(props) {
           {product.name}
         </Link>
         <p>
-          {product.price === product.priceDiscount ? (
+          {!product.price ? (
+            'LOADING'
+          ) : product.price === product.priceDiscount ? (
             <span>NT${product.price}</span>
           ) : (
             <>

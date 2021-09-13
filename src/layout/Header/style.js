@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down(theme.breakpoints.values.sm)]: {
         alignContent: 'space-around',
         flexFlow: 'row wrap',
-        height: '80px',
+        height: '90px',
       },
     },
     logo: { height: 'calc(1.5rem + 10px)' },
@@ -49,8 +49,8 @@ const useStyles = makeStyles((theme) => {
     },
     avatar: {
       backgroundColor: theme.palette.primary.dark,
-      width: '2rem',
-      height: '2rem',
+      width: '2.5rem',
+      height: '2.5rem',
       '&:hover': {
         cursor: 'pointer',
       },

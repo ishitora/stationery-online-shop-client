@@ -10,7 +10,7 @@ import customAxios from '../../utils/customAxios';
 import changeQuery from '../../utils/changeQuery';
 import useStyles from './style';
 function SearchResultPage(props) {
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState([{}, {}, {}, {}]);
   const [resultCount, setResultCount] = useState('');
 
   const classes = useStyles();
@@ -20,6 +20,7 @@ function SearchResultPage(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setProductList([{}, {}, {}, {}]);
     const reqProducts = async (param) => {
       try {
         const res = await customAxios.get(`/product/search${param}`);

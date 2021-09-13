@@ -6,11 +6,20 @@ const useStyles = makeStyles((theme) => {
       marginBottom: '30px',
     },
     item: {
+      cursor: 'pointer',
       margin: '0 auto',
-      width: '100%',
       height: '250px',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
+      display: 'flex',
+      [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
+        height: '350px',
+      },
+      [theme.breakpoints.up(theme.breakpoints.values.lg)]: {
+        height: '400px',
+      },
+    },
+    img: {
+      margin: '0 auto',
+      height: '250px',
       [theme.breakpoints.up(theme.breakpoints.values.sm)]: {
         height: '350px',
       },

@@ -84,14 +84,14 @@ function Header(props) {
         </SimpleButton>
       )}
       <div className={classes.rightGroup}>
+        <Link to='/cart'>
+          <CartButton />
+        </Link>
         {isLogin ? (
           <Avatar className={classes.avatar}>
             <PersonIcon />
           </Avatar>
         ) : null}
-        <Link to='/cart'>
-          <CartButton />
-        </Link>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import useStyles from './style';
 function Input(props) {
   const [visibility, setVisibility] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [displayErrorMessage, setDisplayErrorMessage] = useState(false);
 
   const {
     id,
@@ -16,20 +17,32 @@ function Input(props) {
     validation,
     value,
     onChange,
-
+    hasError,
     sethasError,
     placeholder,
   } = props;
+
   const changeVisibility = () => {
     setVisibility(!visibility);
   };
-  const handleBlur = async () => {
+
+  //改變輸入時 驗證是否有錯誤
+  const handleChange = async (e) => {
+    onChange(e);
     if (validation) {
-      const [newValid, newErrorMessage] = await validation(value);
+      const [newValid, newErrorMessage] = await validation(e.target.value);
       sethasError({ [name]: newValid });
-      setErrorMessage(newErrorMessage);
+      if (newValid) setErrorMessage(newErrorMessage);
     }
   };
+
+  //失去焦點時 依是否有錯誤來決定顯示錯誤訊息
+  const handleBlur = async () => {
+    if (validation) {
+      setDisplayErrorMessage(hasError[name]);
+    }
+  };
+
   const classes = useStyles(props);
 
   return (
@@ -42,7 +55,7 @@ function Input(props) {
           name={name}
           value={value}
           type={visibility ? 'text' : type}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={handleBlur}
           placeholder={placeholder}
         />
@@ -61,7 +74,13 @@ function Input(props) {
         ) : null}
       </div>
       <div style={{ height: '20px', fontSize: '0.7em' }}>
-        <span className={classes.errorMessage}>{errorMessage}</span>
+        <span
+          className={
+            (displayErrorMessage ? classes.display + ' ' : '') +
+            classes.noDisplay
+          }>
+          {errorMessage}
+        </span>
       </div>
     </div>
   );

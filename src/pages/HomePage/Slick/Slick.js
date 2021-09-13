@@ -1,10 +1,16 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+//首頁的輪播
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Slider from 'react-slick';
+
+import useStyles from './style';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import useStyles from './style';
+
+import sliderImage1 from '../../../assets/sliderImage1.png';
+import sliderImage2 from '../../../assets/sliderImage2.png';
+import sliderImage3 from '../../../assets/sliderImage3.png';
 
 function Slick() {
   const [MouseDownX, setMouseDownX] = useState(0);
@@ -18,8 +24,9 @@ function Slick() {
     slidesToScroll: 1,
   };
   const list = [
-    { url: 'https://i.imgur.com/gJFUkAA.png', to: 'search/?category=diary' },
-    { url: 'https://i.imgur.com/mWQIFXZ.jpg', to: 'search/?category=notebook' },
+    { url: sliderImage1, to: '/' },
+    { url: sliderImage2, to: 'search/?category=diary' },
+    { url: sliderImage3, to: 'search/?category=desk' },
   ];
 
   const handleMouseDown = (e) => {
@@ -37,16 +44,14 @@ function Slick() {
     <div>
       <Slider {...settings} className={classes.root}>
         {list.map((item) => (
-          <div key={item}>
-            <div
-              onMouseDown={handleMouseDown}
-              onMouseUp={(e) => {
-                handleMouseUp(e, item.to);
-              }}
-              className={classes.item}
-              style={{
-                backgroundImage: 'url(' + item.url + '})',
-              }}></div>
+          <div
+            key={item}
+            onMouseDown={handleMouseDown}
+            onMouseUp={(e) => {
+              handleMouseUp(e, item.to);
+            }}
+            className={classes.item}>
+            <img className={classes.img} src={item.url} alt='照片' />
           </div>
         ))}
       </Slider>

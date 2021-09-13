@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme) => {
     list: {
       flex: 1,
       maxWidth: '1300px',
+      width: '100%',
       padding: '1em 3vw',
       display: 'flex',
       flexFlow: 'row wrap',
