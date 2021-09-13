@@ -54,7 +54,7 @@ function CheckoutPage(props) {
       //正常情況購物車為空和未登入時不會到此頁面  跳轉到錯誤頁面
       history.push('/error');
     }
-  }, [cart.length, history, isLogin]);
+  }, []);
 
   const handleChange = (event) => {
     setState({
