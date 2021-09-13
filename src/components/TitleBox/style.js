@@ -1,14 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles((theme) => {
   return {
     title: {
       alignSelf: 'stretch',
       textAlign: 'center',
       fontSize: '1.8rem',
       fontWeight: 700,
-      color: '#FFF',
+      color: '#EEE',
       padding: '2px',
-      backgroundColor: '#AAA',
+      backgroundColor: theme.palette.primary.main,
       marginBottom: '1em',
     },
   };

@@ -39,10 +39,10 @@ function CheckoutPage(props) {
   const [isCreating, setIsCreating] = useState(false);
 
   const classes = useStyles();
-  const { isLogin, history, clearCart } = props;
+  const { isLogin, history, cart, clearCart } = props;
 
   useEffect(() => {
-    if (isLogin) {
+    if (isLogin && cart.length) {
       const reqCart = async () => {
         const [list, , price] = await getCartProductList();
         setPoductList(list);
@@ -51,9 +51,10 @@ function CheckoutPage(props) {
 
       reqCart();
     } else {
-      history.push('/notLogin');
+      //正常情況購物車為空和未登入時不會到此頁面  跳轉到錯誤頁面
+      history.push('/error');
     }
-  }, [history, isLogin]);
+  }, [cart.length, history, isLogin]);
 
   const handleChange = (event) => {
     setState({
@@ -106,6 +107,7 @@ function CheckoutPage(props) {
 
 const mapStateToProps = (state) => ({
   isLogin: state.isLogin,
+  cart: state.cart,
 });
 
 const mapDispatchToProps = (dispatch) => ({

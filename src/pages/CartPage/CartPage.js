@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import CartList from './CartList/CartList';
 import CartCheckout from './CartCheckout/CartCheckout';
 import CartCheckoutPhone from './CartCheckoutPhone/CartCheckoutPhone';
+import CartIsEmpty from './CartIsEmpty/CartIsEmpty';
 
 import getCartProductList from '../../utils/getCartProductList';
 import { clearCart } from '../../actions/';
@@ -19,7 +20,7 @@ function CartPage(props) {
   const { cart, isLogin, history, clearCart } = props;
 
   useEffect(() => {
-    if (isLogin) {
+    if (isLogin && cart.length) {
       const reqCart = async () => {
         const [list, quantity, price] = await getCartProductList();
         setPoductList(list);
@@ -27,10 +28,13 @@ function CartPage(props) {
         setTotalPrice(price);
       };
       reqCart();
-    } else {
+    } else if (!isLogin) {
       history.push('/notLogin');
     }
   }, [cart, isLogin, history]);
+  if (cart.length === 0) {
+    return <CartIsEmpty />;
+  }
 
   return (
     <div className={classes.root}>
