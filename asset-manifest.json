@@ -1,21 +1,24 @@
 {
   "files": {
-    "main.js": "/stationery-online-shop-client/static/js/main.f61c23ab.chunk.js",
-    "main.js.map": "/stationery-online-shop-client/static/js/main.f61c23ab.chunk.js.map",
+    "main.js": "/stationery-online-shop-client/static/js/main.b3901482.chunk.js",
+    "main.js.map": "/stationery-online-shop-client/static/js/main.b3901482.chunk.js.map",
     "runtime-main.js": "/stationery-online-shop-client/static/js/runtime-main.84760099.js",
     "runtime-main.js.map": "/stationery-online-shop-client/static/js/runtime-main.84760099.js.map",
     "static/css/2.c4bb3b01.chunk.css": "/stationery-online-shop-client/static/css/2.c4bb3b01.chunk.css",
-    "static/js/2.66532a23.chunk.js": "/stationery-online-shop-client/static/js/2.66532a23.chunk.js",
-    "static/js/2.66532a23.chunk.js.map": "/stationery-online-shop-client/static/js/2.66532a23.chunk.js.map",
+    "static/js/2.ab48f8cf.chunk.js": "/stationery-online-shop-client/static/js/2.ab48f8cf.chunk.js",
+    "static/js/2.ab48f8cf.chunk.js.map": "/stationery-online-shop-client/static/js/2.ab48f8cf.chunk.js.map",
     "index.html": "/stationery-online-shop-client/index.html",
     "static/css/2.c4bb3b01.chunk.css.map": "/stationery-online-shop-client/static/css/2.c4bb3b01.chunk.css.map",
-    "static/js/2.66532a23.chunk.js.LICENSE.txt": "/stationery-online-shop-client/static/js/2.66532a23.chunk.js.LICENSE.txt",
-    "static/media/slick-theme.css": "/stationery-online-shop-client/static/media/slick.c94f7671.ttf"
+    "static/js/2.ab48f8cf.chunk.js.LICENSE.txt": "/stationery-online-shop-client/static/js/2.ab48f8cf.chunk.js.LICENSE.txt",
+    "static/media/slick-theme.css": "/stationery-online-shop-client/static/media/slick.c94f7671.ttf",
+    "static/media/sliderImage1.9e95ea17.png": "/stationery-online-shop-client/static/media/sliderImage1.9e95ea17.png",
+    "static/media/sliderImage2.df565719.png": "/stationery-online-shop-client/static/media/sliderImage2.df565719.png",
+    "static/media/sliderImage3.b8e17970.png": "/stationery-online-shop-client/static/media/sliderImage3.b8e17970.png"
   },
   "entrypoints": [
     "static/js/runtime-main.84760099.js",
     "static/css/2.c4bb3b01.chunk.css",
-    "static/js/2.66532a23.chunk.js",
-    "static/js/main.f61c23ab.chunk.js"
+    "static/js/2.ab48f8cf.chunk.js",
+    "static/js/main.b3901482.chunk.js"
   ]
 }
