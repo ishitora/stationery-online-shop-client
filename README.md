@@ -17,11 +17,17 @@
 ## 畫面
 
 在 Full HD (1920px X 1080px)尺寸螢幕打開的首頁
+
+<br>
+
 ![PC首頁](https://i.imgur.com/iL7kgHw.png)
 
 <br>
 
 在 IPHONE7 (375px X 667px)打開的首頁
+
+<br>
+
 ![手機首頁](https://i.imgur.com/lQJR06H.jpg)
 
 <br>
